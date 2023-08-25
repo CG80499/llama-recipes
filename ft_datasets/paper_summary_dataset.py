@@ -77,14 +77,14 @@ def create_prompt_from_sample(sample: TrainingSample) -> str:
     chat = create_chat_from_sample(sample)
     return chat.llama_render() + SUFFIX.format(query=sample.query)
 
-class InstructionDataset(Dataset):
-    def __init__(self, dataset_config, tokenizer, partition="train", max_tokens=8196):
+class PaperSummaryDataset(Dataset):
+    def __init__(self, dataset_config, tokenizer, partition="train", max_tokens=6144):
         raw_dataset = json.load(open(dataset_config.data_path))
         self.dataset: list[TrainingSample] = [TrainingSample(**sample) for sample in raw_dataset]
         if partition == "train":
-            self.dataset = self.dataset[:-50] # last 50 samples are reserved for validation
+            self.dataset = self.dataset#[:-50] # last 50 samples are reserved for validation
         else:
-            self.dataset = self.dataset[-50:]
+            self.dataset = self.dataset#[-50:]
 
         self.max_tokens = max_tokens
         # tokenizer = Tokenizer(model_path=model_path + "./tokenizer.model")
@@ -110,7 +110,7 @@ class InstructionDataset(Dataset):
         example = torch.tensor(
             example, dtype=torch.int64
         )
-        padding = self.max_words - example.shape[0]
+        padding = self.max_tokens - example.shape[0]
         if padding > 0:
             example = torch.cat((example, torch.zeros(padding, dtype=torch.int64) - 1))
         elif padding < 0:
