@@ -78,7 +78,7 @@ def create_prompt_from_sample(sample: TrainingSample) -> str:
     return chat.llama_render() + SUFFIX.format(query=sample.query)
 
 class PaperSummaryDataset(Dataset):
-    def __init__(self, dataset_config, tokenizer, partition="train", max_tokens=6144):
+    def __init__(self, dataset_config, tokenizer, partition="train", max_tokens=7000):
         raw_dataset = json.load(open(dataset_config.data_path))
         self.dataset: list[TrainingSample] = [TrainingSample(**sample) for sample in raw_dataset]
         if partition == "train":
