@@ -10,7 +10,7 @@ class train_config:
     enable_fsdp: bool=False
     low_cpu_fsdp: bool=False
     run_validation: bool=True
-    batch_size_training: int=2
+    batch_size_training: int=1
     num_epochs: int=3
     num_workers_dataloader: int=1
     lr: float=1e-4
@@ -21,7 +21,7 @@ class train_config:
     mixed_precision: bool=True
     val_batch_size: int=1
     dataset = "samsum_dataset"
-    micro_batch_size: int=4
+    micro_batch_size: int=1
     peft_method: str = "lora" # None , llama_adapter, prefix
     use_peft: bool=False
     output_dir: str = "PATH/to/save/PEFT/model"
@@ -33,7 +33,7 @@ class train_config:
     dist_checkpoint_root_folder: str="PATH/to/save/FSDP/model" # will be used if using FSDP
     dist_checkpoint_folder: str="fine-tuned" # will be used if using FSDP
     save_optimizer: bool=False # will be used if using FSDP
-    use_fast_kernels: bool = False # Enable using SDPA from PyTroch Accelerated Transformers, make use Flash Attention and Xformer memory-efficient kernels
+    use_fast_kernels: bool = True # Enable using SDPA from PyTroch Accelerated Transformers, make use Flash Attention and Xformer memory-efficient kernels
 
     
     

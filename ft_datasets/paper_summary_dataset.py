@@ -13,7 +13,7 @@ from pydantic import BaseModel
 
 # String templates for the prompt
 
-USER_TEMPLATE = """I now need you to help me summarize many more papers in the same way as above. Our research question is "{query}".
+USER_TEMPLATE = """I need you to help me summarize academic papers. Our research question is "{query}".
 
 I've collected many papers that might address this research question.
 
@@ -107,6 +107,7 @@ class PaperSummaryDataset(Dataset):
         )
         example = self.tokenizer.encode(example)
         example.append(self.tokenizer.eos_token_id)
+        print("Number of tokens in the example: ", len(example))
         example = torch.tensor(
             example, dtype=torch.int64
         )
