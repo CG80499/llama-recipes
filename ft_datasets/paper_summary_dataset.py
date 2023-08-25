@@ -19,7 +19,7 @@ I've collected many papers that might address this research question.
 
 {paper_list}
 
-Write a summary of what the papers collectively say about the research question. Use the same format as the summary above.
+Write a summary of what the papers collectively say about the research question.
 
 You must cite the papers in your summary. You can use the following format: Author (year)
 
@@ -82,9 +82,9 @@ class PaperSummaryDataset(Dataset):
         raw_dataset = json.load(open(dataset_config.data_path))
         self.dataset: list[TrainingSample] = [TrainingSample(**sample) for sample in raw_dataset]
         if partition == "train":
-            self.dataset = self.dataset#[:-50] # last 50 samples are reserved for validation
+            self.dataset = self.dataset[:-50] # last 50 samples are reserved for validation
         else:
-            self.dataset = self.dataset#[-50:]
+            self.dataset = self.dataset[-50:]
 
         self.max_tokens = max_tokens
         # tokenizer = Tokenizer(model_path=model_path + "./tokenizer.model")
@@ -115,7 +115,7 @@ class PaperSummaryDataset(Dataset):
         if padding > 0:
             example = torch.cat((example, torch.zeros(padding, dtype=torch.int64) - 1))
         elif padding < 0:
-            example = example[: self.max_words]
+            example = example[: self.max_tokens]
         labels = copy.deepcopy(example)
         labels[: len(prompt)] = -1
         example_mask = example.ge(0)
