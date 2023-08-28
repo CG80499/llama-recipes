@@ -1,146 +1,1519 @@
-/mnt/cg-experimental/llama-recipes/llama_finetuning.py:11: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
-  from pkg_resources import packaging
-
 ===================================BUG REPORT===================================
 Welcome to bitsandbytes. For bug reports, please submit your error trace to: https://github.com/TimDettmers/bitsandbytes/issues
 ================================================================================
-Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:04<00:09,  4.64s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:09<00:04,  4.61s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:12<00:00,  3.96s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:12<00:00,  4.14s/it]
-/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:362: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`. This was detected when initializing the generation config instance, which means the corresponding file may hold incorrect parameterization and should be fixed.
+
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
+Loading checkpoint shards:  33%|███▎      | 1/3 [00:04<00:09,  4.64s/it]
+Loading checkpoint shards:  67%|██████▋   | 2/3 [00:09<00:04,  4.59s/it]
+Loading checkpoint shards: 100%|██████████| 3/3 [00:12<00:00,  3.80s/it]
+Loading checkpoint shards: 100%|██████████| 3/3 [00:12<00:00,  4.02s/it]
+/root/miniconda3/envs/llama_ft/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:362: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`. This was detected when initializing the generation config instance, which means the corresponding file may hold incorrect parameterization and should be fixed.
   warnings.warn(
-/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:367: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`. This was detected when initializing the generation config instance, which means the corresponding file may hold incorrect parameterization and should be fixed.
+/root/miniconda3/envs/llama_ft/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:367: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`. This was detected when initializing the generation config instance, which means the corresponding file may hold incorrect parameterization and should be fixed.
   warnings.warn(
-/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/peft/utils/other.py:122: FutureWarning: prepare_model_for_int8_training is deprecated and will be removed in a future version. Use prepare_model_for_kbit_training instead.
+/root/miniconda3/envs/llama_ft/lib/python3.10/site-packages/peft/utils/other.py:122: FutureWarning: prepare_model_for_int8_training is deprecated and will be removed in a future version. Use prepare_model_for_kbit_training instead.
   warnings.warn(
-/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/torch/cuda/memory.py:303: FutureWarning: torch.cuda.reset_max_memory_allocated now calls torch.cuda.reset_peak_memory_stats, which resets /all/ peak memory stats.
+/root/miniconda3/envs/llama_ft/lib/python3.10/site-packages/torch/cuda/memory.py:303: FutureWarning: torch.cuda.reset_max_memory_allocated now calls torch.cuda.reset_peak_memory_stats, which resets /all/ peak memory stats.
   warnings.warn(
 --> Model lmsys/vicuna-13b-v1.5-16k
 
 --> lmsys/vicuna-13b-v1.5-16k has 328.09472 Million params
 
-trainable params: 3,276,800 || all params: 13,019,141,120 || trainable%: 0.025169095025525
---> Training Set Length = 150
+trainable params: 6,553,600 || all params: 13,022,417,920 || trainable%: 0.05032552357220002
+--> Training Set Length = 450
 --> Validation Set Length = 50
-Training Epoch0:   0%|[34m          [0m| 0/150 [00:00<?, ?it/s]`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`...
-/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/bitsandbytes/autograd/_functions.py:298: UserWarning: MatMul8bitLt: inputs will be cast from torch.float32 to float16 during quantization
+evaluating Epoch:   0%|[32m          [0m| 0/50 [00:00<?, ?it/s]/root/miniconda3/envs/llama_ft/lib/python3.10/site-packages/bitsandbytes/autograd/_functions.py:298: UserWarning: MatMul8bitLt: inputs will be cast from torch.float32 to float16 during quantization
   warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during quantization")
-Training Epoch0:   1%|[34m          [0m| 1/150 [00:03<08:16,  3.33s/it]Training Epoch0:   1%|[34m▏         [0m| 2/150 [00:04<05:27,  2.22s/it]Training Epoch0:   2%|[34m▏         [0m| 3/150 [00:06<04:28,  1.83s/it]Training Epoch0:   3%|[34m▎         [0m| 4/150 [00:07<04:00,  1.65s/it]Training Epoch0:   3%|[34m▎         [0m| 5/150 [00:08<03:47,  1.57s/it]Training Epoch0:   4%|[34m▍         [0m| 6/150 [00:10<03:39,  1.53s/it]Training Epoch0:   5%|[34m▍         [0m| 7/150 [00:11<03:29,  1.47s/it]Training Epoch0:   5%|[34m▌         [0m| 8/150 [00:13<03:23,  1.43s/it]Training Epoch0:   6%|[34m▌         [0m| 9/150 [00:14<03:16,  1.40s/it]Training Epoch0:   7%|[34m▋         [0m| 10/150 [00:15<03:12,  1.37s/it]Training Epoch0:   7%|[34m▋         [0m| 11/150 [00:17<03:13,  1.39s/it]Training Epoch0:   8%|[34m▊         [0m| 12/150 [00:18<03:10,  1.38s/it]Training Epoch0:   9%|[34m▊         [0m| 13/150 [00:19<03:07,  1.37s/it]Training Epoch0:   9%|[34m▉         [0m| 14/150 [00:21<03:03,  1.35s/it]Training Epoch0:  10%|[34m█         [0m| 15/150 [00:22<03:00,  1.33s/it]Training Epoch0:  11%|[34m█         [0m| 16/150 [00:23<02:57,  1.32s/it]Training Epoch0:  11%|[34m█▏        [0m| 17/150 [00:25<02:56,  1.33s/it]Training Epoch0:  12%|[34m█▏        [0m| 18/150 [00:26<02:57,  1.35s/it]Training Epoch0:  13%|[34m█▎        [0m| 19/150 [00:27<02:56,  1.34s/it]Number of tokens in the example:  4
-Number of tokens in the example:  4
-Number of tokens in the example:  4
-Number of tokens in the example:  4
-Number of tokens in the example:  4
-Number of tokens in the example:  4
-Number of tokens in the example:  4
-Number of tokens in the example:  4
-Number of tokens in the example:  4
-Number of tokens in the example:  4
-Number of tokens in the example:  4
-Number of tokens in the example:  4
-Number of tokens in the example:  4
-Number of tokens in the example:  4
-Number of tokens in the example:  4
-Number of tokens in the example:  4
-Number of tokens in the example:  4
-Number of tokens in the example:  4
-Number of tokens in the example:  4
-Number of tokens in the example:  4
-Number of tokens in the example:  4
-Number of tokens in the example:  4
-Training Epoch0:  13%|[34m█▎        [0m| 19/150 [00:28<03:14,  1.49s/it]
+evaluating Epoch:   2%|[32m▏         [0m| 1/50 [00:06<05:16,  6.46s/it]evaluating Epoch:   4%|[32m▍         [0m| 2/50 [00:11<04:42,  5.88s/it]evaluating Epoch:   6%|[32m▌         [0m| 3/50 [00:17<04:28,  5.72s/it]evaluating Epoch:   8%|[32m▊         [0m| 4/50 [00:22<04:18,  5.61s/it]evaluating Epoch:  10%|[32m█         [0m| 5/50 [00:28<04:10,  5.56s/it]evaluating Epoch:  12%|[32m█▏        [0m| 6/50 [00:33<04:03,  5.53s/it]evaluating Epoch:  14%|[32m█▍        [0m| 7/50 [00:39<03:56,  5.50s/it]evaluating Epoch:  16%|[32m█▌        [0m| 8/50 [00:44<03:50,  5.49s/it]evaluating Epoch:  18%|[32m█▊        [0m| 9/50 [00:50<03:45,  5.49s/it]evaluating Epoch:  20%|[32m██        [0m| 10/50 [00:55<03:39,  5.48s/it]evaluating Epoch:  22%|[32m██▏       [0m| 11/50 [01:01<03:33,  5.47s/it]evaluating Epoch:  24%|[32m██▍       [0m| 12/50 [01:06<03:27,  5.46s/it]evaluating Epoch:  26%|[32m██▌       [0m| 13/50 [01:12<03:22,  5.46s/it]evaluating Epoch:  28%|[32m██▊       [0m| 14/50 [01:17<03:16,  5.46s/it]evaluating Epoch:  30%|[32m███       [0m| 15/50 [01:22<03:11,  5.46s/it]evaluating Epoch:  32%|[32m███▏      [0m| 16/50 [01:28<03:05,  5.47s/it]evaluating Epoch:  34%|[32m███▍      [0m| 17/50 [01:33<03:00,  5.47s/it]evaluating Epoch:  36%|[32m███▌      [0m| 18/50 [01:39<02:54,  5.46s/it]evaluating Epoch:  38%|[32m███▊      [0m| 19/50 [01:44<02:49,  5.47s/it]evaluating Epoch:  40%|[32m████      [0m| 20/50 [01:50<02:43,  5.46s/it]evaluating Epoch:  42%|[32m████▏     [0m| 21/50 [01:55<02:37,  5.45s/it]evaluating Epoch:  44%|[32m████▍     [0m| 22/50 [02:01<02:32,  5.44s/it]evaluating Epoch:  46%|[32m████▌     [0m| 23/50 [02:06<02:26,  5.43s/it]evaluating Epoch:  48%|[32m████▊     [0m| 24/50 [02:12<02:21,  5.44s/it]evaluating Epoch:  50%|[32m█████     [0m| 25/50 [02:17<02:15,  5.44s/it]evaluating Epoch:  52%|[32m█████▏    [0m| 26/50 [02:22<02:10,  5.43s/it]evaluating Epoch:  54%|[32m█████▍    [0m| 27/50 [02:28<02:05,  5.45s/it]evaluating Epoch:  56%|[32m█████▌    [0m| 28/50 [02:33<02:00,  5.45s/it]evaluating Epoch:  58%|[32m█████▊    [0m| 29/50 [02:39<01:54,  5.44s/it]evaluating Epoch:  60%|[32m██████    [0m| 30/50 [02:44<01:49,  5.46s/it]evaluating Epoch:  62%|[32m██████▏   [0m| 31/50 [02:50<01:43,  5.45s/it]evaluating Epoch:  64%|[32m██████▍   [0m| 32/50 [02:55<01:37,  5.44s/it]evaluating Epoch:  66%|[32m██████▌   [0m| 33/50 [03:00<01:32,  5.43s/it]evaluating Epoch:  68%|[32m██████▊   [0m| 34/50 [03:06<01:26,  5.43s/it]evaluating Epoch:  70%|[32m███████   [0m| 35/50 [03:11<01:21,  5.43s/it]evaluating Epoch:  72%|[32m███████▏  [0m| 36/50 [03:17<01:15,  5.43s/it]evaluating Epoch:  74%|[32m███████▍  [0m| 37/50 [03:22<01:10,  5.43s/it]evaluating Epoch:  76%|[32m███████▌  [0m| 38/50 [03:28<01:05,  5.43s/it]evaluating Epoch:  78%|[32m███████▊  [0m| 39/50 [03:33<00:59,  5.43s/it]evaluating Epoch:  80%|[32m████████  [0m| 40/50 [03:38<00:54,  5.43s/it]evaluating Epoch:  82%|[32m████████▏ [0m| 41/50 [03:44<00:48,  5.43s/it]evaluating Epoch:  84%|[32m████████▍ [0m| 42/50 [03:49<00:43,  5.43s/it]evaluating Epoch:  86%|[32m████████▌ [0m| 43/50 [03:55<00:38,  5.43s/it]evaluating Epoch:  88%|[32m████████▊ [0m| 44/50 [04:00<00:32,  5.43s/it]evaluating Epoch:  90%|[32m█████████ [0m| 45/50 [04:06<00:27,  5.44s/it]evaluating Epoch:  92%|[32m█████████▏[0m| 46/50 [04:11<00:21,  5.44s/it]evaluating Epoch:  94%|[32m█████████▍[0m| 47/50 [04:17<00:16,  5.43s/it]evaluating Epoch:  96%|[32m█████████▌[0m| 48/50 [04:22<00:10,  5.44s/it]evaluating Epoch:  98%|[32m█████████▊[0m| 49/50 [04:27<00:05,  5.43s/it]evaluating Epoch: 100%|[32m██████████[0m| 50/50 [04:33<00:00,  5.42s/it]Number of tokens in the example:  3445
+Number of tokens in the example:  3384
+Number of tokens in the example:  2718
+Number of tokens in the example:  3081
+Number of tokens in the example:  1845
+Number of tokens in the example:  2530
+Number of tokens in the example:  2405
+Number of tokens in the example:  4751
+Number of tokens in the example:  3331
+Number of tokens in the example:  3569
+Number of tokens in the example:  2362
+Number of tokens in the example:  3569
+Number of tokens in the example:  3371
+Number of tokens in the example:  3594
+Number of tokens in the example:  2466
+Number of tokens in the example:  4699
+Number of tokens in the example:  3947
+Number of tokens in the example:  2918
+Number of tokens in the example:  3201
+Number of tokens in the example:  2922
+Number of tokens in the example:  2509
+Number of tokens in the example:  3227
+Number of tokens in the example:  2774
+Number of tokens in the example:  4604
+Number of tokens in the example:  3477
+Number of tokens in the example:  2359
+Number of tokens in the example:  2446
+Number of tokens in the example:  3764
+Number of tokens in the example:  2491
+Number of tokens in the example:  4081
+Number of tokens in the example:  3876
+Number of tokens in the example:  2548
+Number of tokens in the example:  2694
+Number of tokens in the example:  2124
+Number of tokens in the example:  3898
+Number of tokens in the example:  3085
+Number of tokens in the example:  3749
+Number of tokens in the example:  4236
+Number of tokens in the example:  3600
+Number of tokens in the example:  2653
+Number of tokens in the example:  3738
+Number of tokens in the example:  3074
+Number of tokens in the example:  2970
+Number of tokens in the example:  3247
+Number of tokens in the example:  4485
+Number of tokens in the example:  3255
+Number of tokens in the example:  2700
+Number of tokens in the example:  4023
+Number of tokens in the example:  2640
+Number of tokens in the example:  2293
+evaluating Epoch: 100%|[32m██████████[0m| 50/50 [04:33<00:00,  5.47s/it]
+ eval_ppl=tensor(1.8025, device='cuda:0') eval_epoch_loss=tensor(0.5892, device='cuda:0')
+Training Epoch0:   0%|[34m          [0m| 0/450 [00:00<?, ?it/s]`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`...
+Training Epoch0:   0%|[34m          [0m| 1/450 [00:27<3:24:41, 27.35s/it]Training Epoch0:   0%|[34m          [0m| 2/450 [00:54<3:21:27, 26.98s/it]Training Epoch0:   1%|[34m          [0m| 3/450 [01:20<3:20:12, 26.87s/it]Training Epoch0:   1%|[34m          [0m| 4/450 [01:47<3:19:28, 26.84s/it]Training Epoch0:   1%|[34m          [0m| 5/450 [02:14<3:18:50, 26.81s/it]Training Epoch0:   1%|[34m▏         [0m| 6/450 [02:41<3:18:17, 26.80s/it]Training Epoch0:   2%|[34m▏         [0m| 7/450 [03:07<3:17:43, 26.78s/it]Training Epoch0:   2%|[34m▏         [0m| 8/450 [03:34<3:17:12, 26.77s/it]Training Epoch0:   2%|[34m▏         [0m| 9/450 [04:01<3:16:45, 26.77s/it]Training Epoch0:   2%|[34m▏         [0m| 10/450 [04:28<3:16:21, 26.78s/it]Training Epoch0:   2%|[34m▏         [0m| 11/450 [04:54<3:15:58, 26.78s/it]Training Epoch0:   3%|[34m▎         [0m| 12/450 [05:21<3:15:33, 26.79s/it]Training Epoch0:   3%|[34m▎         [0m| 13/450 [05:48<3:15:06, 26.79s/it]Training Epoch0:   3%|[34m▎         [0m| 14/450 [06:15<3:14:39, 26.79s/it]Training Epoch0:   3%|[34m▎         [0m| 15/450 [06:42<3:14:09, 26.78s/it]Training Epoch0:   4%|[34m▎         [0m| 16/450 [07:08<3:13:41, 26.78s/it]Training Epoch0:   4%|[34m▍         [0m| 17/450 [07:35<3:13:14, 26.78s/it]Training Epoch0:   4%|[34m▍         [0m| 18/450 [08:02<3:12:46, 26.77s/it]Training Epoch0:   4%|[34m▍         [0m| 19/450 [08:29<3:12:17, 26.77s/it]Training Epoch0:   4%|[34m▍         [0m| 20/450 [08:55<3:11:55, 26.78s/it]Training Epoch0:   5%|[34m▍         [0m| 21/450 [09:22<3:11:28, 26.78s/it]Training Epoch0:   5%|[34m▍         [0m| 22/450 [09:49<3:11:01, 26.78s/it]Training Epoch0:   5%|[34m▌         [0m| 23/450 [10:16<3:10:34, 26.78s/it]Training Epoch0:   5%|[34m▌         [0m| 24/450 [10:43<3:10:06, 26.78s/it]Training Epoch0:   6%|[34m▌         [0m| 25/450 [11:09<3:09:38, 26.77s/it]Training Epoch0:   6%|[34m▌         [0m| 26/450 [11:36<3:09:13, 26.78s/it]Training Epoch0:   6%|[34m▌         [0m| 27/450 [12:03<3:08:47, 26.78s/it]Training Epoch0:   6%|[34m▌         [0m| 28/450 [12:30<3:08:20, 26.78s/it]Training Epoch0:   6%|[34m▋         [0m| 29/450 [12:56<3:07:51, 26.77s/it]Training Epoch0:   7%|[34m▋         [0m| 30/450 [13:23<3:07:20, 26.76s/it]Training Epoch0:   7%|[34m▋         [0m| 31/450 [13:50<3:06:55, 26.77s/it]Training Epoch0:   7%|[34m▋         [0m| 32/450 [14:17<3:06:28, 26.77s/it]Training Epoch0:   7%|[34m▋         [0m| 33/450 [14:44<3:06:04, 26.77s/it]Training Epoch0:   8%|[34m▊         [0m| 34/450 [15:10<3:05:39, 26.78s/it]Training Epoch0:   8%|[34m▊         [0m| 35/450 [15:37<3:05:10, 26.77s/it]Training Epoch0:   8%|[34m▊         [0m| 36/450 [16:04<3:04:45, 26.78s/it]Training Epoch0:   8%|[34m▊         [0m| 37/450 [16:31<3:04:18, 26.78s/it]Training Epoch0:   8%|[34m▊         [0m| 38/450 [16:57<3:03:50, 26.77s/it]Training Epoch0:   9%|[34m▊         [0m| 39/450 [17:24<3:03:23, 26.77s/it]Training Epoch0:   9%|[34m▉         [0m| 40/450 [17:51<3:02:58, 26.78s/it]Training Epoch0:   9%|[34m▉         [0m| 41/450 [18:18<3:02:31, 26.78s/it]Training Epoch0:   9%|[34m▉         [0m| 42/450 [18:45<3:02:04, 26.78s/it]Training Epoch0:  10%|[34m▉         [0m| 43/450 [19:11<3:01:36, 26.77s/it]Training Epoch0:  10%|[34m▉         [0m| 44/450 [19:38<3:01:11, 26.78s/it]Training Epoch0:  10%|[34m█         [0m| 45/450 [20:05<3:00:45, 26.78s/it]Training Epoch0:  10%|[34m█         [0m| 46/450 [20:32<3:00:18, 26.78s/it]Training Epoch0:  10%|[34m█         [0m| 47/450 [20:58<2:59:51, 26.78s/it]Training Epoch0:  11%|[34m█         [0m| 48/450 [21:25<2:59:26, 26.78s/it]Training Epoch0:  11%|[34m█         [0m| 49/450 [21:52<2:59:00, 26.78s/it]Training Epoch0:  11%|[34m█         [0m| 50/450 [22:19<2:58:40, 26.80s/it]Training Epoch0:  11%|[34m█▏        [0m| 51/450 [22:46<2:58:16, 26.81s/it]Training Epoch0:  12%|[34m█▏        [0m| 52/450 [23:13<2:57:54, 26.82s/it]Training Epoch0:  12%|[34m█▏        [0m| 53/450 [23:39<2:57:31, 26.83s/it]Training Epoch0:  12%|[34m█▏        [0m| 54/450 [24:06<2:57:03, 26.83s/it]Training Epoch0:  12%|[34m█▏        [0m| 55/450 [24:33<2:56:36, 26.83s/it]Training Epoch0:  12%|[34m█▏        [0m| 56/450 [25:00<2:56:11, 26.83s/it]Training Epoch0:  13%|[34m█▎        [0m| 57/450 [25:27<2:55:41, 26.82s/it]Training Epoch0:  13%|[34m█▎        [0m| 58/450 [25:53<2:55:13, 26.82s/it]Training Epoch0:  13%|[34m█▎        [0m| 59/450 [26:20<2:54:51, 26.83s/it]Training Epoch0:  13%|[34m█▎        [0m| 60/450 [26:47<2:54:27, 26.84s/it]Training Epoch0:  14%|[34m█▎        [0m| 61/450 [27:14<2:53:59, 26.84s/it]Training Epoch0:  14%|[34m█▍        [0m| 62/450 [27:41<2:53:34, 26.84s/it]Training Epoch0:  14%|[34m█▍        [0m| 63/450 [28:08<2:53:07, 26.84s/it]Training Epoch0:  14%|[34m█▍        [0m| 64/450 [28:35<2:52:39, 26.84s/it]Training Epoch0:  14%|[34m█▍        [0m| 65/450 [29:01<2:52:12, 26.84s/it]Training Epoch0:  15%|[34m█▍        [0m| 66/450 [29:28<2:51:46, 26.84s/it]Training Epoch0:  15%|[34m█▍        [0m| 67/450 [29:55<2:51:20, 26.84s/it]Training Epoch0:  15%|[34m█▌        [0m| 68/450 [30:22<2:50:54, 26.84s/it]Training Epoch0:  15%|[34m█▌        [0m| 69/450 [30:49<2:50:21, 26.83s/it]Training Epoch0:  16%|[34m█▌        [0m| 70/450 [31:16<2:49:55, 26.83s/it]Training Epoch0:  16%|[34m█▌        [0m| 71/450 [31:42<2:49:29, 26.83s/it]Training Epoch0:  16%|[34m█▌        [0m| 72/450 [32:09<2:49:00, 26.83s/it]Training Epoch0:  16%|[34m█▌        [0m| 73/450 [32:36<2:48:33, 26.83s/it]Training Epoch0:  16%|[34m█▋        [0m| 74/450 [33:03<2:48:08, 26.83s/it]Training Epoch0:  17%|[34m█▋        [0m| 75/450 [33:30<2:47:43, 26.83s/it]Training Epoch0:  17%|[34m█▋        [0m| 76/450 [33:57<2:47:13, 26.83s/it]Training Epoch0:  17%|[34m█▋        [0m| 77/450 [34:23<2:46:46, 26.83s/it]Training Epoch0:  17%|[34m█▋        [0m| 78/450 [34:50<2:46:19, 26.83s/it]Training Epoch0:  18%|[34m█▊        [0m| 79/450 [35:17<2:45:52, 26.83s/it]Training Epoch0:  18%|[34m█▊        [0m| 80/450 [35:44<2:45:26, 26.83s/it]Training Epoch0:  18%|[34m█▊        [0m| 81/450 [36:11<2:45:02, 26.84s/it]Training Epoch0:  18%|[34m█▊        [0m| 82/450 [36:38<2:44:34, 26.83s/it]Training Epoch0:  18%|[34m█▊        [0m| 83/450 [37:04<2:44:07, 26.83s/it]Training Epoch0:  19%|[34m█▊        [0m| 84/450 [37:31<2:43:40, 26.83s/it]Training Epoch0:  19%|[34m█▉        [0m| 85/450 [37:58<2:43:12, 26.83s/it]Training Epoch0:  19%|[34m█▉        [0m| 86/450 [38:25<2:42:43, 26.82s/it]Training Epoch0:  19%|[34m█▉        [0m| 87/450 [38:52<2:42:17, 26.83s/it]Training Epoch0:  20%|[34m█▉        [0m| 88/450 [39:18<2:41:50, 26.82s/it]Training Epoch0:  20%|[34m█▉        [0m| 89/450 [39:45<2:41:21, 26.82s/it]Training Epoch0:  20%|[34m██        [0m| 90/450 [40:12<2:40:52, 26.81s/it]Training Epoch0:  20%|[34m██        [0m| 91/450 [40:39<2:40:27, 26.82s/it]Training Epoch0:  20%|[34m██        [0m| 92/450 [41:06<2:40:02, 26.82s/it]Training Epoch0:  21%|[34m██        [0m| 93/450 [41:33<2:39:38, 26.83s/it]Training Epoch0:  21%|[34m██        [0m| 94/450 [41:59<2:39:13, 26.83s/it]Training Epoch0:  21%|[34m██        [0m| 95/450 [42:26<2:38:45, 26.83s/it]Training Epoch0:  21%|[34m██▏       [0m| 96/450 [42:53<2:38:17, 26.83s/it]Training Epoch0:  22%|[34m██▏       [0m| 97/450 [43:20<2:37:50, 26.83s/it]Training Epoch0:  22%|[34m██▏       [0m| 98/450 [43:47<2:37:21, 26.82s/it]Training Epoch0:  22%|[34m██▏       [0m| 99/450 [44:14<2:36:55, 26.82s/it]Training Epoch0:  22%|[34m██▏       [0m| 100/450 [44:40<2:36:30, 26.83s/it]Training Epoch0:  22%|[34m██▏       [0m| 101/450 [45:07<2:36:03, 26.83s/it]Training Epoch0:  23%|[34m██▎       [0m| 102/450 [45:34<2:35:36, 26.83s/it]Training Epoch0:  23%|[34m██▎       [0m| 103/450 [46:01<2:35:12, 26.84s/it]Training Epoch0:  23%|[34m██▎       [0m| 104/450 [46:28<2:34:45, 26.84s/it]Training Epoch0:  23%|[34m██▎       [0m| 105/450 [46:55<2:34:19, 26.84s/it]Training Epoch0:  24%|[34m██▎       [0m| 106/450 [47:21<2:33:49, 26.83s/it]Training Epoch0:  24%|[34m██▍       [0m| 107/450 [47:48<2:33:19, 26.82s/it]Training Epoch0:  24%|[34m██▍       [0m| 108/450 [48:15<2:32:51, 26.82s/it]Training Epoch0:  24%|[34m██▍       [0m| 109/450 [48:42<2:32:25, 26.82s/it]Training Epoch0:  24%|[34m██▍       [0m| 110/450 [49:09<2:31:59, 26.82s/it]Training Epoch0:  25%|[34m██▍       [0m| 111/450 [49:35<2:31:30, 26.82s/it]Training Epoch0:  25%|[34m██▍       [0m| 112/450 [50:02<2:31:02, 26.81s/it]Training Epoch0:  25%|[34m██▌       [0m| 113/450 [50:29<2:30:35, 26.81s/it]Training Epoch0:  25%|[34m██▌       [0m| 114/450 [50:56<2:30:09, 26.81s/it]Training Epoch0:  26%|[34m██▌       [0m| 115/450 [51:23<2:29:42, 26.81s/it]Training Epoch0:  26%|[34m██▌       [0m| 116/450 [51:50<2:29:15, 26.81s/it]Training Epoch0:  26%|[34m██▌       [0m| 117/450 [52:16<2:28:49, 26.82s/it]Training Epoch0:  26%|[34m██▌       [0m| 118/450 [52:43<2:28:23, 26.82s/it]Training Epoch0:  26%|[34m██▋       [0m| 119/450 [53:10<2:27:57, 26.82s/it]Training Epoch0:  27%|[34m██▋       [0m| 120/450 [53:37<2:27:30, 26.82s/it]Training Epoch0:  27%|[34m██▋       [0m| 121/450 [54:04<2:27:04, 26.82s/it]Training Epoch0:  27%|[34m██▋       [0m| 122/450 [54:30<2:26:36, 26.82s/it]Training Epoch0:  27%|[34m██▋       [0m| 123/450 [54:57<2:26:09, 26.82s/it]Training Epoch0:  28%|[34m██▊       [0m| 124/450 [55:24<2:25:43, 26.82s/it]Training Epoch0:  28%|[34m██▊       [0m| 125/450 [55:51<2:25:17, 26.82s/it]Training Epoch0:  28%|[34m██▊       [0m| 126/450 [56:18<2:24:50, 26.82s/it]Training Epoch0:  28%|[34m██▊       [0m| 127/450 [56:45<2:24:22, 26.82s/it]Training Epoch0:  28%|[34m██▊       [0m| 128/450 [57:11<2:23:55, 26.82s/it]Training Epoch0:  29%|[34m██▊       [0m| 129/450 [57:38<2:23:30, 26.82s/it]Training Epoch0:  29%|[34m██▉       [0m| 130/450 [58:05<2:23:01, 26.82s/it]Training Epoch0:  29%|[34m██▉       [0m| 131/450 [58:32<2:22:31, 26.81s/it]Training Epoch0:  29%|[34m██▉       [0m| 132/450 [58:59<2:22:07, 26.82s/it]Training Epoch0:  30%|[34m██▉       [0m| 133/450 [59:25<2:21:42, 26.82s/it]Training Epoch0:  30%|[34m██▉       [0m| 134/450 [59:52<2:21:15, 26.82s/it]Training Epoch0:  30%|[34m███       [0m| 135/450 [1:00:19<2:20:49, 26.82s/it]Training Epoch0:  30%|[34m███       [0m| 136/450 [1:00:46<2:20:25, 26.83s/it]Training Epoch0:  30%|[34m███       [0m| 137/450 [1:01:13<2:19:58, 26.83s/it]Training Epoch0:  31%|[34m███       [0m| 138/450 [1:01:40<2:19:31, 26.83s/it]Training Epoch0:  31%|[34m███       [0m| 139/450 [1:02:06<2:19:03, 26.83s/it]Training Epoch0:  31%|[34m███       [0m| 140/450 [1:02:33<2:18:35, 26.83s/it]Training Epoch0:  31%|[34m███▏      [0m| 141/450 [1:03:00<2:18:11, 26.83s/it]Training Epoch0:  32%|[34m███▏      [0m| 142/450 [1:03:27<2:17:47, 26.84s/it]Training Epoch0:  32%|[34m███▏      [0m| 143/450 [1:03:54<2:17:19, 26.84s/it]Training Epoch0:  32%|[34m███▏      [0m| 144/450 [1:04:21<2:16:55, 26.85s/it]Training Epoch0:  32%|[34m███▏      [0m| 145/450 [1:04:48<2:16:31, 26.86s/it]Training Epoch0:  32%|[34m███▏      [0m| 146/450 [1:05:14<2:16:00, 26.84s/it]Training Epoch0:  33%|[34m███▎      [0m| 147/450 [1:05:41<2:15:30, 26.83s/it]Training Epoch0:  33%|[34m███▎      [0m| 148/450 [1:06:08<2:15:01, 26.83s/it]Training Epoch0:  33%|[34m███▎      [0m| 149/450 [1:06:35<2:14:34, 26.83s/it]Training Epoch0:  33%|[34m███▎      [0m| 150/450 [1:07:02<2:14:06, 26.82s/it]
+ step 0 is completed and loss is 0.5551796555519104
 
- step 0 is completed and loss is 8.709982872009277
+ step 1 is completed and loss is 0.485304057598114
 
- step 1 is completed and loss is 7.923007965087891
+ step 2 is completed and loss is 0.48424798250198364
 
- step 2 is completed and loss is 7.04954719543457
+ step 3 is completed and loss is 0.22845135629177094
 
- step 3 is completed and loss is 6.405670642852783
+ step 4 is completed and loss is 0.5049040913581848
 
- step 4 is completed and loss is 5.43271017074585
+ step 5 is completed and loss is 0.6894323825836182
 
- step 5 is completed and loss is 4.086333274841309
+ step 6 is completed and loss is 0.8201006650924683
 
- step 6 is completed and loss is 3.4508397579193115
+ step 7 is completed and loss is 0.6419432759284973
 
- step 7 is completed and loss is 2.615060329437256
+ step 8 is completed and loss is 0.5560097098350525
 
- step 8 is completed and loss is 1.6645731925964355
+ step 9 is completed and loss is 0.4683525860309601
 
- step 9 is completed and loss is 1.1661345958709717
+ step 10 is completed and loss is 0.6276918053627014
 
- step 10 is completed and loss is 0.8331237435340881
+ step 11 is completed and loss is 0.5553842186927795
 
- step 11 is completed and loss is 0.4134867787361145
+ step 12 is completed and loss is 0.5277702212333679
 
- step 12 is completed and loss is 0.134190633893013
+ step 13 is completed and loss is 0.6603530049324036
 
- step 13 is completed and loss is 0.018055344000458717
+ step 14 is completed and loss is 0.5415313243865967
 
- step 14 is completed and loss is 0.006737988442182541
+ step 15 is completed and loss is 0.35348403453826904
 
- step 15 is completed and loss is 0.007097848691046238
+ step 16 is completed and loss is 0.6396203637123108
 
- step 16 is completed and loss is 0.0018876809626817703
+ step 17 is completed and loss is 0.6320735216140747
 
- step 17 is completed and loss is 0.002225890988484025
+ step 18 is completed and loss is 0.5574321746826172
 
- step 18 is completed and loss is 0.0008004596456885338
+ step 19 is completed and loss is 0.5973232984542847
+
+ step 20 is completed and loss is 0.6359491944313049
+
+ step 21 is completed and loss is 0.6367127895355225
+
+ step 22 is completed and loss is 0.5844003558158875
+
+ step 23 is completed and loss is 0.5196868181228638
+
+ step 24 is completed and loss is 0.32461848855018616
+
+ step 25 is completed and loss is 0.5046780109405518
+
+ step 26 is completed and loss is 0.37731724977493286
+
+ step 27 is completed and loss is 0.39924314618110657
+
+ step 28 is completed and loss is 0.43421870470046997
+
+ step 29 is completed and loss is 0.27581340074539185
+
+ step 30 is completed and loss is 0.4910127818584442
+
+ step 31 is completed and loss is 0.5216724276542664
+
+ step 32 is completed and loss is 0.5097458958625793
+
+ step 33 is completed and loss is 0.3945959806442261
+
+ step 34 is completed and loss is 0.5032501220703125
+
+ step 35 is completed and loss is 0.43813273310661316
+
+ step 36 is completed and loss is 0.3960915207862854
+
+ step 37 is completed and loss is 0.34092283248901367
+
+ step 38 is completed and loss is 0.28604641556739807
+
+ step 39 is completed and loss is 0.4390839636325836
+
+ step 40 is completed and loss is 0.6150039434432983
+
+ step 41 is completed and loss is 0.4219377040863037
+
+ step 42 is completed and loss is 0.6634199023246765
+
+ step 43 is completed and loss is 0.5781116485595703
+
+ step 44 is completed and loss is 0.7372269034385681
+
+ step 45 is completed and loss is 0.5829711556434631
+
+ step 46 is completed and loss is 0.44482746720314026
+
+ step 47 is completed and loss is 0.5473697185516357
+
+ step 48 is completed and loss is 0.5967835187911987
+
+ step 49 is completed and loss is 0.2881273329257965
+
+ step 50 is completed and loss is 0.32179248332977295
+
+ step 51 is completed and loss is 0.3693799376487732
+
+ step 52 is completed and loss is 0.7703120708465576
+
+ step 53 is completed and loss is 0.5168379545211792
+
+ step 54 is completed and loss is 0.5582562685012817
+
+ step 55 is completed and loss is 0.5472099781036377
+
+ step 56 is completed and loss is 0.4279457628726959
+
+ step 57 is completed and loss is 0.434038907289505
+
+ step 58 is completed and loss is 0.3375509977340698
+
+ step 59 is completed and loss is 0.5282931923866272
+
+ step 60 is completed and loss is 0.3948441445827484
+
+ step 61 is completed and loss is 0.4688436985015869
+
+ step 62 is completed and loss is 0.34203964471817017
+
+ step 63 is completed and loss is 0.3139317035675049
+
+ step 64 is completed and loss is 0.5865750312805176
+
+ step 65 is completed and loss is 0.4129825532436371
+
+ step 66 is completed and loss is 0.34030479192733765
+
+ step 67 is completed and loss is 0.5652018785476685
+
+ step 68 is completed and loss is 0.8560863137245178
+
+ step 69 is completed and loss is 0.28321394324302673
+
+ step 70 is completed and loss is 0.3690742254257202
+
+ step 71 is completed and loss is 0.5491281151771545
+
+ step 72 is completed and loss is 0.5756190419197083
+
+ step 73 is completed and loss is 0.39774101972579956
+
+ step 74 is completed and loss is 0.5217053294181824
+
+ step 75 is completed and loss is 0.9232714772224426
+
+ step 76 is completed and loss is 0.336918443441391
+
+ step 77 is completed and loss is 0.41143497824668884
+
+ step 78 is completed and loss is 0.46496859192848206
+
+ step 79 is completed and loss is 0.39658746123313904
+
+ step 80 is completed and loss is 0.6472710967063904
+
+ step 81 is completed and loss is 0.525090754032135
+
+ step 82 is completed and loss is 0.3673942983150482
+
+ step 83 is completed and loss is 0.6065248847007751
+
+ step 84 is completed and loss is 0.45562559366226196
+
+ step 85 is completed and loss is 0.44957235455513
+
+ step 86 is completed and loss is 0.39577701687812805
+
+ step 87 is completed and loss is 0.8300934433937073
+
+ step 88 is completed and loss is 0.3866216838359833
+
+ step 89 is completed and loss is 0.42552849650382996
+
+ step 90 is completed and loss is 0.5320561528205872
+
+ step 91 is completed and loss is 0.49147090315818787
+
+ step 92 is completed and loss is 0.733153760433197
+
+ step 93 is completed and loss is 0.4944559335708618
+
+ step 94 is completed and loss is 0.524816632270813
+
+ step 95 is completed and loss is 0.3672384023666382
+
+ step 96 is completed and loss is 0.3375164270401001
+
+ step 97 is completed and loss is 0.3704856336116791
+
+ step 98 is completed and loss is 1.3768731355667114
+
+ step 99 is completed and loss is 0.5920970439910889
+
+ step 100 is completed and loss is 0.28983205556869507
+
+ step 101 is completed and loss is 0.5610390305519104
+
+ step 102 is completed and loss is 0.45798370242118835
+
+ step 103 is completed and loss is 0.5707064270973206
+
+ step 104 is completed and loss is 0.5615195035934448
+
+ step 105 is completed and loss is 0.44990676641464233
+
+ step 106 is completed and loss is 0.36486825346946716
+
+ step 107 is completed and loss is 0.48938870429992676
+
+ step 108 is completed and loss is 0.585240364074707
+
+ step 109 is completed and loss is 0.5016533732414246
+
+ step 110 is completed and loss is 0.5257601141929626
+
+ step 111 is completed and loss is 0.5422603487968445
+
+ step 112 is completed and loss is 0.4307589828968048
+
+ step 113 is completed and loss is 0.4493102729320526
+
+ step 114 is completed and loss is 0.48710548877716064
+
+ step 115 is completed and loss is 0.35477638244628906
+
+ step 116 is completed and loss is 0.4209677577018738
+
+ step 117 is completed and loss is 0.4576840400695801
+
+ step 118 is completed and loss is 0.3797712028026581
+
+ step 119 is completed and loss is 0.5463216304779053
+
+ step 120 is completed and loss is 0.7179421186447144
+
+ step 121 is completed and loss is 0.5108053088188171
+
+ step 122 is completed and loss is 0.4463821351528168
+
+ step 123 is completed and loss is 0.39457669854164124
+
+ step 124 is completed and loss is 0.46826881170272827
+
+ step 125 is completed and loss is 0.6448504328727722
+
+ step 126 is completed and loss is 0.4585353136062622
+
+ step 127 is completed and loss is 0.39016127586364746
+
+ step 128 is completed and loss is 0.37464314699172974
+
+ step 129 is completed and loss is 0.7246503829956055
+
+ step 130 is completed and loss is 0.6356987357139587
+
+ step 131 is completed and loss is 0.3215174973011017
+
+ step 132 is completed and loss is 0.5962479114532471
+
+ step 133 is completed and loss is 0.45189881324768066
+
+ step 134 is completed and loss is 0.5110395550727844
+
+ step 135 is completed and loss is 0.5706802606582642
+
+ step 136 is completed and loss is 0.3845962584018707
+
+ step 137 is completed and loss is 0.4635120630264282
+
+ step 138 is completed and loss is 0.6947887539863586
+
+ step 139 is completed and loss is 0.40064364671707153
+
+ step 140 is completed and loss is 0.3784640431404114
+
+ step 141 is completed and loss is 0.5391808152198792
+
+ step 142 is completed and loss is 0.3933907151222229
+
+ step 143 is completed and loss is 0.5368068218231201
+
+ step 144 is completed and loss is 0.46718156337738037
+
+ step 145 is completed and loss is 0.6586624383926392
+
+ step 146 is completed and loss is 0.5961061716079712
+
+ step 147 is completed and loss is 0.5036748051643372
+
+ step 148 is completed and loss is 0.6805846691131592
+
+ step 149 is completed and loss is 0.21584013104438782
+Training Epoch0:  34%|[34m███▎      [0m| 151/450 [1:07:28<2:13:38, 26.82s/it]Training Epoch0:  34%|[34m███▍      [0m| 152/450 [1:07:55<2:13:11, 26.82s/it]Training Epoch0:  34%|[34m███▍      [0m| 153/450 [1:08:22<2:12:45, 26.82s/it]Training Epoch0:  34%|[34m███▍      [0m| 154/450 [1:08:49<2:12:19, 26.82s/it]Training Epoch0:  34%|[34m███▍      [0m| 155/450 [1:09:16<2:11:53, 26.83s/it]Training Epoch0:  35%|[34m███▍      [0m| 156/450 [1:09:43<2:11:25, 26.82s/it]Training Epoch0:  35%|[34m███▍      [0m| 157/450 [1:10:09<2:10:59, 26.82s/it]Training Epoch0:  35%|[34m███▌      [0m| 158/450 [1:10:36<2:10:33, 26.83s/it]Training Epoch0:  35%|[34m███▌      [0m| 159/450 [1:11:03<2:10:06, 26.83s/it]Training Epoch0:  36%|[34m███▌      [0m| 160/450 [1:11:30<2:09:40, 26.83s/it]Training Epoch0:  36%|[34m███▌      [0m| 161/450 [1:11:57<2:09:12, 26.83s/it]Training Epoch0:  36%|[34m███▌      [0m| 162/450 [1:12:24<2:08:47, 26.83s/it]Training Epoch0:  36%|[34m███▌      [0m| 163/450 [1:12:50<2:08:19, 26.83s/it]Training Epoch0:  36%|[34m███▋      [0m| 164/450 [1:13:17<2:07:55, 26.84s/it]Training Epoch0:  37%|[34m███▋      [0m| 165/450 [1:13:44<2:07:29, 26.84s/it]Training Epoch0:  37%|[34m███▋      [0m| 166/450 [1:14:11<2:07:03, 26.84s/it]Training Epoch0:  37%|[34m███▋      [0m| 167/450 [1:14:38<2:06:35, 26.84s/it]Training Epoch0:  37%|[34m███▋      [0m| 168/450 [1:15:05<2:06:09, 26.84s/it]Training Epoch0:  38%|[34m███▊      [0m| 169/450 [1:15:31<2:05:42, 26.84s/it]Training Epoch0:  38%|[34m███▊      [0m| 170/450 [1:15:58<2:05:13, 26.84s/it]Training Epoch0:  38%|[34m███▊      [0m| 171/450 [1:16:25<2:04:45, 26.83s/it]Training Epoch0:  38%|[34m███▊      [0m| 172/450 [1:16:52<2:04:10, 26.80s/it]Training Epoch0:  38%|[34m███▊      [0m| 173/450 [1:17:19<2:03:39, 26.79s/it]Training Epoch0:  39%|[34m███▊      [0m| 174/450 [1:17:45<2:03:11, 26.78s/it]Training Epoch0:  39%|[34m███▉      [0m| 175/450 [1:18:12<2:02:42, 26.77s/it]Training Epoch0:  39%|[34m███▉      [0m| 176/450 [1:18:39<2:02:14, 26.77s/it]Training Epoch0:  39%|[34m███▉      [0m| 177/450 [1:19:06<2:01:44, 26.76s/it]Training Epoch0:  40%|[34m███▉      [0m| 178/450 [1:19:32<2:01:16, 26.75s/it]Training Epoch0:  40%|[34m███▉      [0m| 179/450 [1:19:59<2:00:48, 26.75s/it]Training Epoch0:  40%|[34m████      [0m| 180/450 [1:20:26<2:00:20, 26.74s/it]Training Epoch0:  40%|[34m████      [0m| 181/450 [1:20:52<1:59:55, 26.75s/it]Training Epoch0:  40%|[34m████      [0m| 182/450 [1:21:19<1:59:29, 26.75s/it]Training Epoch0:  41%|[34m████      [0m| 183/450 [1:21:46<1:59:03, 26.75s/it]Training Epoch0:  41%|[34m████      [0m| 184/450 [1:22:13<1:58:36, 26.76s/it]Training Epoch0:  41%|[34m████      [0m| 185/450 [1:22:40<1:58:09, 26.75s/it]Training Epoch0:  41%|[34m████▏     [0m| 186/450 [1:23:06<1:57:41, 26.75s/it]Training Epoch0:  42%|[34m████▏     [0m| 187/450 [1:23:33<1:57:13, 26.74s/it]Training Epoch0:  42%|[34m████▏     [0m| 188/450 [1:24:00<1:56:51, 26.76s/it]Training Epoch0:  42%|[34m████▏     [0m| 189/450 [1:24:27<1:56:31, 26.79s/it]Training Epoch0:  42%|[34m████▏     [0m| 190/450 [1:24:53<1:56:07, 26.80s/it]Training Epoch0:  42%|[34m████▏     [0m| 191/450 [1:25:20<1:55:42, 26.81s/it]Training Epoch0:  43%|[34m████▎     [0m| 192/450 [1:25:47<1:55:18, 26.82s/it]Training Epoch0:  43%|[34m████▎     [0m| 193/450 [1:26:14<1:54:52, 26.82s/it]Training Epoch0:  43%|[34m████▎     [0m| 194/450 [1:26:41<1:54:27, 26.83s/it]Training Epoch0:  43%|[34m████▎     [0m| 195/450 [1:27:08<1:54:01, 26.83s/it]Training Epoch0:  44%|[34m████▎     [0m| 196/450 [1:27:34<1:53:34, 26.83s/it]Training Epoch0:  44%|[34m████▍     [0m| 197/450 [1:28:01<1:53:07, 26.83s/it]Training Epoch0:  44%|[34m████▍     [0m| 198/450 [1:28:28<1:52:41, 26.83s/it]Training Epoch0:  44%|[34m████▍     [0m| 199/450 [1:28:55<1:52:13, 26.83s/it]Training Epoch0:  44%|[34m████▍     [0m| 200/450 [1:29:22<1:51:47, 26.83s/it]Training Epoch0:  45%|[34m████▍     [0m| 201/450 [1:29:49<1:51:21, 26.83s/it]Training Epoch0:  45%|[34m████▍     [0m| 202/450 [1:30:15<1:50:50, 26.82s/it]Training Epoch0:  45%|[34m████▌     [0m| 203/450 [1:30:42<1:50:19, 26.80s/it]Training Epoch0:  45%|[34m████▌     [0m| 204/450 [1:31:09<1:49:50, 26.79s/it]Training Epoch0:  46%|[34m████▌     [0m| 205/450 [1:31:36<1:49:21, 26.78s/it]Training Epoch0:  46%|[34m████▌     [0m| 206/450 [1:32:02<1:48:54, 26.78s/it]Training Epoch0:  46%|[34m████▌     [0m| 207/450 [1:32:29<1:48:25, 26.77s/it]Training Epoch0:  46%|[34m████▌     [0m| 208/450 [1:32:56<1:47:58, 26.77s/it]Number of tokens in the example:  2784
+Number of tokens in the example:  2593
+Number of tokens in the example:  3416
+Number of tokens in the example:  5502
+Number of tokens in the example:  2505
+Number of tokens in the example:  3298
+Number of tokens in the example:  2037
+Number of tokens in the example:  2986
+Number of tokens in the example:  3678
+Number of tokens in the example:  2576
+Number of tokens in the example:  4297
+Number of tokens in the example:  4234
+Number of tokens in the example:  3175
+Number of tokens in the example:  3934
+Number of tokens in the example:  2936
+Number of tokens in the example:  4206
+Number of tokens in the example:  2764
+Number of tokens in the example:  3696
+Number of tokens in the example:  2484
+Number of tokens in the example:  3965
+Number of tokens in the example:  3004
+Number of tokens in the example:  3130
+Number of tokens in the example:  3461
+Number of tokens in the example:  2590
+Number of tokens in the example:  2616
+Number of tokens in the example:  3471
+Number of tokens in the example:  2683
+Number of tokens in the example:  3057
+Number of tokens in the example:  3023
+Number of tokens in the example:  2108
+Number of tokens in the example:  3018
+Number of tokens in the example:  3158
+Number of tokens in the example:  3076
+Number of tokens in the example:  2973
+Number of tokens in the example:  2949
+Number of tokens in the example:  3816
+Number of tokens in the example:  2888
+Number of tokens in the example:  2715
+Number of tokens in the example:  3572
+Number of tokens in the example:  3146
+Number of tokens in the example:  4687
+Number of tokens in the example:  3490
+Number of tokens in the example:  2634
+Number of tokens in the example:  2549
+Number of tokens in the example:  3907
+Number of tokens in the example:  2956
+Number of tokens in the example:  2911
+Number of tokens in the example:  2910
+Number of tokens in the example:  3051
+Number of tokens in the example:  3007
+Number of tokens in the example:  2812
+Number of tokens in the example:  3727
+Number of tokens in the example:  3192
+Number of tokens in the example:  3023
+Number of tokens in the example:  3581
+Number of tokens in the example:  4182
+Number of tokens in the example:  2760
+Number of tokens in the example:  3839
+Number of tokens in the example:  4423
+Number of tokens in the example:  3347
+Number of tokens in the example:  4836
+Number of tokens in the example:  3948
+Number of tokens in the example:  3072
+Number of tokens in the example:  2370
+Number of tokens in the example:  3114
+Number of tokens in the example:  4199
+Number of tokens in the example:  3198
+Number of tokens in the example:  3050
+Number of tokens in the example:  1592
+Number of tokens in the example:  3764
+Number of tokens in the example:  3012
+Number of tokens in the example:  2828
+Number of tokens in the example:  2453
+Number of tokens in the example:  3093
+Number of tokens in the example:  2949
+Number of tokens in the example:  1974
+Number of tokens in the example:  3348
+Number of tokens in the example:  2833
+Number of tokens in the example:  2079
+Number of tokens in the example:  3600
+Number of tokens in the example:  4339
+Number of tokens in the example:  2570
+Number of tokens in the example:  3224
+Number of tokens in the example:  2798
+Number of tokens in the example:  4133
+Number of tokens in the example:  3207
+Number of tokens in the example:  4013
+Number of tokens in the example:  2871
+Number of tokens in the example:  2521
+Number of tokens in the example:  2066
+Number of tokens in the example:  2603
+Number of tokens in the example:  3571
+Number of tokens in the example:  4098
+Number of tokens in the example:  4223
+Number of tokens in the example:  4282
+Number of tokens in the example:  3582
+Number of tokens in the example:  3544
+Number of tokens in the example:  3054
+Number of tokens in the example:  3576
+Number of tokens in the example:  3400
+Number of tokens in the example:  4320
+Number of tokens in the example:  2926
+Number of tokens in the example:  3388
+Number of tokens in the example:  3451
+Number of tokens in the example:  3188
+Number of tokens in the example:  3202
+Number of tokens in the example:  2464
+Number of tokens in the example:  3112
+Number of tokens in the example:  4019
+Number of tokens in the example:  4267
+Number of tokens in the example:  2646
+Number of tokens in the example:  3262
+Number of tokens in the example:  2754
+Number of tokens in the example:  3414
+Number of tokens in the example:  4399
+Number of tokens in the example:  3081
+Number of tokens in the example:  4045
+Number of tokens in the example:  2458
+Number of tokens in the example:  3183
+Number of tokens in the example:  3248
+Number of tokens in the example:  3284
+Number of tokens in the example:  2241
+Number of tokens in the example:  2734
+Number of tokens in the example:  2344
+Number of tokens in the example:  4704
+Number of tokens in the example:  2832
+Number of tokens in the example:  2905
+Number of tokens in the example:  3253
+Number of tokens in the example:  5214
+Number of tokens in the example:  2496
+Number of tokens in the example:  2870
+Number of tokens in the example:  3817
+Number of tokens in the example:  3453
+Number of tokens in the example:  2845
+Number of tokens in the example:  3385
+Number of tokens in the example:  5139
+Number of tokens in the example:  3095
+Number of tokens in the example:  2432
+Number of tokens in the example:  3017
+Number of tokens in the example:  2638
+Number of tokens in the example:  4379
+Number of tokens in the example:  4029
+Number of tokens in the example:  2630
+Number of tokens in the example:  2872
+Number of tokens in the example:  2850
+Number of tokens in the example:  2737
+Number of tokens in the example:  3390
+Number of tokens in the example:  2718
+Number of tokens in the example:  3002
+Number of tokens in the example:  4174
+Number of tokens in the example:  3131
+Number of tokens in the example:  3049
+Number of tokens in the example:  2438
+Number of tokens in the example:  2849
+Number of tokens in the example:  5228
+Number of tokens in the example:  2652
+Number of tokens in the example:  2639
+Number of tokens in the example:  3235
+Number of tokens in the example:  2639
+Number of tokens in the example:  3504
+Number of tokens in the example:  2361
+Number of tokens in the example:  4544
+Number of tokens in the example:  2279
+Number of tokens in the example:  3877
+Number of tokens in the example:  3356
+Number of tokens in the example:  3605
+Number of tokens in the example:  2798
+Number of tokens in the example:  3556
+Number of tokens in the example:  3666
+Number of tokens in the example:  1978
+Number of tokens in the example:  3422
+Number of tokens in the example:  2767
+Number of tokens in the example:  1996
+Number of tokens in the example:  3861
+Number of tokens in the example:  3865
+Number of tokens in the example:  3997
+Number of tokens in the example:  2358
+Number of tokens in the example:  2657
+Number of tokens in the example:  2824
+Number of tokens in the example:  4048
+Number of tokens in the example:  4340
+Number of tokens in the example:  3302
+Number of tokens in the example:  3376
+Number of tokens in the example:  3802
+Number of tokens in the example:  2386
+Number of tokens in the example:  2448
+Number of tokens in the example:  2698
+Number of tokens in the example:  2728
+Number of tokens in the example:  6890
+Number of tokens in the example:  3023
+Number of tokens in the example:  3985
+Number of tokens in the example:  3858
+Number of tokens in the example:  2877
+Number of tokens in the example:  3353
+Number of tokens in the example:  3023
+Number of tokens in the example:  2935
+Number of tokens in the example:  3209
+Number of tokens in the example:  3113
+Number of tokens in the example:  2290
+Number of tokens in the example:  2770
+Number of tokens in the example:  3155
+Number of tokens in the example:  3052
+Number of tokens in the example:  2225
+Number of tokens in the example:  3944
+Number of tokens in the example:  2695
+Number of tokens in the example:  4034
+Number of tokens in the example:  2179
+Number of tokens in the example:  4437
+Number of tokens in the example:  4449
+Number of tokens in the example:  3705
+Training Epoch0:  46%|[34m████▋     [0m| 209/450 [1:33:23<1:47:30, 26.77s/it]Training Epoch0:  47%|[34m████▋     [0m| 210/450 [1:33:50<1:47:03, 26.76s/it]Training Epoch0:  47%|[34m████▋     [0m| 211/450 [1:34:16<1:46:34, 26.76s/it]Training Epoch0:  47%|[34m████▋     [0m| 212/450 [1:34:43<1:46:08, 26.76s/it]Training Epoch0:  47%|[34m████▋     [0m| 213/450 [1:35:10<1:45:42, 26.76s/it]Training Epoch0:  48%|[34m████▊     [0m| 214/450 [1:35:37<1:45:17, 26.77s/it]Training Epoch0:  48%|[34m████▊     [0m| 215/450 [1:36:03<1:44:53, 26.78s/it]Training Epoch0:  48%|[34m████▊     [0m| 216/450 [1:36:30<1:44:26, 26.78s/it]Training Epoch0:  48%|[34m████▊     [0m| 217/450 [1:36:57<1:44:01, 26.79s/it]Training Epoch0:  48%|[34m████▊     [0m| 218/450 [1:37:24<1:43:34, 26.78s/it]Training Epoch0:  49%|[34m████▊     [0m| 219/450 [1:37:51<1:43:06, 26.78s/it]Training Epoch0:  49%|[34m████▉     [0m| 220/450 [1:38:17<1:42:38, 26.77s/it]Training Epoch0:  49%|[34m████▉     [0m| 221/450 [1:38:44<1:42:11, 26.77s/it]Training Epoch0:  49%|[34m████▉     [0m| 222/450 [1:39:11<1:41:44, 26.77s/it]Training Epoch0:  50%|[34m████▉     [0m| 223/450 [1:39:38<1:41:16, 26.77s/it]Training Epoch0:  50%|[34m████▉     [0m| 224/450 [1:40:04<1:40:48, 26.76s/it]Training Epoch0:  50%|[34m█████     [0m| 225/450 [1:40:31<1:40:20, 26.76s/it]Training Epoch0:  50%|[34m█████     [0m| 226/450 [1:40:58<1:39:53, 26.76s/it]Training Epoch0:  50%|[34m█████     [0m| 227/450 [1:41:25<1:39:27, 26.76s/it]Training Epoch0:  51%|[34m█████     [0m| 228/450 [1:41:51<1:39:00, 26.76s/it]Training Epoch0:  51%|[34m█████     [0m| 229/450 [1:42:18<1:38:32, 26.76s/it]Training Epoch0:  51%|[34m█████     [0m| 230/450 [1:42:45<1:38:07, 26.76s/it]Training Epoch0:  51%|[34m█████▏    [0m| 231/450 [1:43:12<1:37:40, 26.76s/it]Training Epoch0:  52%|[34m█████▏    [0m| 232/450 [1:43:38<1:37:13, 26.76s/it]Training Epoch0:  52%|[34m█████▏    [0m| 233/450 [1:44:05<1:36:46, 26.76s/it]Training Epoch0:  52%|[34m█████▏    [0m| 234/450 [1:44:32<1:36:20, 26.76s/it]Training Epoch0:  52%|[34m█████▏    [0m| 235/450 [1:44:59<1:35:54, 26.77s/it]Training Epoch0:  52%|[34m█████▏    [0m| 236/450 [1:45:25<1:35:29, 26.78s/it]Training Epoch0:  53%|[34m█████▎    [0m| 237/450 [1:45:52<1:35:02, 26.77s/it]Training Epoch0:  53%|[34m█████▎    [0m| 238/450 [1:46:19<1:34:36, 26.78s/it]Training Epoch0:  53%|[34m█████▎    [0m| 239/450 [1:46:46<1:34:10, 26.78s/it]Training Epoch0:  53%|[34m█████▎    [0m| 240/450 [1:47:13<1:33:43, 26.78s/it]Training Epoch0:  54%|[34m█████▎    [0m| 241/450 [1:47:39<1:33:16, 26.78s/it]Training Epoch0:  54%|[34m█████▍    [0m| 242/450 [1:48:06<1:32:48, 26.77s/it]Training Epoch0:  54%|[34m█████▍    [0m| 243/450 [1:48:33<1:32:23, 26.78s/it]Training Epoch0:  54%|[34m█████▍    [0m| 244/450 [1:49:00<1:31:55, 26.78s/it]Training Epoch0:  54%|[34m█████▍    [0m| 245/450 [1:49:26<1:31:28, 26.77s/it]Training Epoch0:  55%|[34m█████▍    [0m| 246/450 [1:49:53<1:31:00, 26.77s/it]Training Epoch0:  55%|[34m█████▍    [0m| 247/450 [1:50:20<1:30:34, 26.77s/it]Training Epoch0:  55%|[34m█████▌    [0m| 248/450 [1:50:47<1:30:08, 26.77s/it]Training Epoch0:  55%|[34m█████▌    [0m| 249/450 [1:51:14<1:29:43, 26.78s/it]Training Epoch0:  56%|[34m█████▌    [0m| 250/450 [1:51:40<1:29:17, 26.79s/it]Training Epoch0:  56%|[34m█████▌    [0m| 251/450 [1:52:07<1:28:52, 26.80s/it]Training Epoch0:  56%|[34m█████▌    [0m| 252/450 [1:52:34<1:28:25, 26.80s/it]Training Epoch0:  56%|[34m█████▌    [0m| 253/450 [1:53:01<1:27:59, 26.80s/it]Training Epoch0:  56%|[34m█████▋    [0m| 254/450 [1:53:28<1:27:34, 26.81s/it]Training Epoch0:  57%|[34m█████▋    [0m| 255/450 [1:53:54<1:27:07, 26.81s/it]Training Epoch0:  57%|[34m█████▋    [0m| 256/450 [1:54:21<1:26:39, 26.80s/it]Training Epoch0:  57%|[34m█████▋    [0m| 257/450 [1:54:48<1:26:11, 26.80s/it]Training Epoch0:  57%|[34m█████▋    [0m| 258/450 [1:55:15<1:25:44, 26.79s/it]Training Epoch0:  58%|[34m█████▊    [0m| 259/450 [1:55:42<1:25:18, 26.80s/it]Training Epoch0:  58%|[34m█████▊    [0m| 260/450 [1:56:08<1:24:51, 26.80s/it]Training Epoch0:  58%|[34m█████▊    [0m| 261/450 [1:56:35<1:24:25, 26.80s/it]Training Epoch0:  58%|[34m█████▊    [0m| 262/450 [1:57:02<1:23:58, 26.80s/it]Training Epoch0:  58%|[34m█████▊    [0m| 263/450 [1:57:29<1:23:30, 26.80s/it]Training Epoch0:  59%|[34m█████▊    [0m| 264/450 [1:57:56<1:23:07, 26.81s/it]Training Epoch0:  59%|[34m█████▉    [0m| 265/450 [1:58:23<1:22:42, 26.83s/it]Training Epoch0:  59%|[34m█████▉    [0m| 266/450 [1:58:49<1:22:17, 26.84s/it]Training Epoch0:  59%|[34m█████▉    [0m| 267/450 [1:59:16<1:21:53, 26.85s/it]Training Epoch0:  60%|[34m█████▉    [0m| 268/450 [1:59:43<1:21:28, 26.86s/it]Training Epoch0:  60%|[34m█████▉    [0m| 269/450 [2:00:10<1:21:07, 26.89s/it]Training Epoch0:  60%|[34m██████    [0m| 270/450 [2:00:37<1:20:44, 26.91s/it]Training Epoch0:  60%|[34m██████    [0m| 271/450 [2:01:04<1:20:20, 26.93s/it]Training Epoch0:  60%|[34m██████    [0m| 272/450 [2:01:31<1:19:54, 26.94s/it]Training Epoch0:  61%|[34m██████    [0m| 273/450 [2:01:58<1:19:29, 26.94s/it]Training Epoch0:  61%|[34m██████    [0m| 274/450 [2:02:25<1:18:58, 26.92s/it]Training Epoch0:  61%|[34m██████    [0m| 275/450 [2:02:52<1:18:31, 26.92s/it]Training Epoch0:  61%|[34m██████▏   [0m| 276/450 [2:03:19<1:18:06, 26.93s/it]Training Epoch0:  62%|[34m██████▏   [0m| 277/450 [2:03:46<1:17:39, 26.93s/it]Training Epoch0:  62%|[34m██████▏   [0m| 278/450 [2:04:13<1:17:10, 26.92s/it]Training Epoch0:  62%|[34m██████▏   [0m| 279/450 [2:04:39<1:16:40, 26.90s/it]Training Epoch0:  62%|[34m██████▏   [0m| 280/450 [2:05:06<1:16:09, 26.88s/it]Training Epoch0:  62%|[34m██████▏   [0m| 281/450 [2:05:33<1:15:41, 26.87s/it]Training Epoch0:  63%|[34m██████▎   [0m| 282/450 [2:06:00<1:15:13, 26.87s/it]Training Epoch0:  63%|[34m██████▎   [0m| 283/450 [2:06:27<1:14:46, 26.86s/it]Training Epoch0:  63%|[34m██████▎   [0m| 284/450 [2:06:54<1:14:18, 26.86s/it]Training Epoch0:  63%|[34m██████▎   [0m| 285/450 [2:07:20<1:13:51, 26.86s/it]Training Epoch0:  64%|[34m██████▎   [0m| 286/450 [2:07:47<1:13:23, 26.85s/it]Training Epoch0:  64%|[34m██████▍   [0m| 287/450 [2:08:14<1:12:53, 26.83s/it]Training Epoch0:  64%|[34m██████▍   [0m| 288/450 [2:08:41<1:12:26, 26.83s/it]Training Epoch0:  64%|[34m██████▍   [0m| 289/450 [2:09:08<1:11:57, 26.82s/it]Training Epoch0:  64%|[34m██████▍   [0m| 290/450 [2:09:35<1:11:30, 26.81s/it]Training Epoch0:  65%|[34m██████▍   [0m| 291/450 [2:10:01<1:11:01, 26.80s/it]Training Epoch0:  65%|[34m██████▍   [0m| 292/450 [2:10:28<1:10:34, 26.80s/it]Training Epoch0:  65%|[34m██████▌   [0m| 293/450 [2:10:55<1:10:08, 26.81s/it]Training Epoch0:  65%|[34m██████▌   [0m| 294/450 [2:11:22<1:09:41, 26.81s/it]Training Epoch0:  66%|[34m██████▌   [0m| 295/450 [2:11:49<1:09:15, 26.81s/it]Training Epoch0:  66%|[34m██████▌   [0m| 296/450 [2:12:15<1:08:49, 26.82s/it]Training Epoch0:  66%|[34m██████▌   [0m| 297/450 [2:12:42<1:08:23, 26.82s/it]Training Epoch0:  66%|[34m██████▌   [0m| 298/450 [2:13:09<1:07:57, 26.82s/it]
+ step 150 is completed and loss is 0.9584497213363647
+
+ step 151 is completed and loss is 0.3632265031337738
+
+ step 152 is completed and loss is 0.5123263597488403
+
+ step 153 is completed and loss is 0.3591596186161041
+
+ step 154 is completed and loss is 0.43823257088661194
+
+ step 155 is completed and loss is 0.4080248773097992
+
+ step 156 is completed and loss is 0.5860491991043091
+
+ step 157 is completed and loss is 0.763970136642456
+
+ step 158 is completed and loss is 0.6133646368980408
+
+ step 159 is completed and loss is 0.4670242667198181
+
+ step 160 is completed and loss is 0.3426358699798584
+
+ step 161 is completed and loss is 0.6785643696784973
+
+ step 162 is completed and loss is 0.5377464890480042
+
+ step 163 is completed and loss is 0.37994271516799927
+
+ step 164 is completed and loss is 0.6463918089866638
+
+ step 165 is completed and loss is 0.5083969235420227
+
+ step 166 is completed and loss is 0.44570448994636536
+
+ step 167 is completed and loss is 0.3071361780166626
+
+ step 168 is completed and loss is 0.35765379667282104
+
+ step 169 is completed and loss is 0.6781585216522217
+
+ step 170 is completed and loss is 0.4685756266117096
+
+ step 171 is completed and loss is 0.5878249406814575
+
+ step 172 is completed and loss is 0.5090614557266235
+
+ step 173 is completed and loss is 0.3994166851043701
+
+ step 174 is completed and loss is 0.3560287058353424
+
+ step 175 is completed and loss is 0.3159075975418091
+
+ step 176 is completed and loss is 0.4481474757194519
+
+ step 177 is completed and loss is 0.601471483707428
+
+ step 178 is completed and loss is 0.3611668348312378
+
+ step 179 is completed and loss is 0.3124384582042694
+
+ step 180 is completed and loss is 0.2664511799812317
+
+ step 181 is completed and loss is 0.2711799442768097
+
+ step 182 is completed and loss is 0.5345301032066345
+
+ step 183 is completed and loss is 0.27738434076309204
+
+ step 184 is completed and loss is 0.5138347148895264
+
+ step 185 is completed and loss is 0.500154972076416
+
+ step 186 is completed and loss is 0.39083096385002136
+
+ step 187 is completed and loss is 0.7119303941726685
+
+ step 188 is completed and loss is 0.27869299054145813
+
+ step 189 is completed and loss is 0.5679028034210205
+
+ step 190 is completed and loss is 0.6102948188781738
+
+ step 191 is completed and loss is 0.46262139081954956
+
+ step 192 is completed and loss is 0.4982939660549164
+
+ step 193 is completed and loss is 0.5265002846717834
+
+ step 194 is completed and loss is 0.5742956399917603
+
+ step 195 is completed and loss is 0.4910571277141571
+
+ step 196 is completed and loss is 0.6548420190811157
+
+ step 197 is completed and loss is 0.48338258266448975
+
+ step 198 is completed and loss is 0.5184926986694336
+
+ step 199 is completed and loss is 0.4769781231880188
+
+ step 200 is completed and loss is 0.4337001442909241
+
+ step 201 is completed and loss is 0.33260151743888855
+
+ step 202 is completed and loss is 0.4984341263771057
+
+ step 203 is completed and loss is 0.49519267678260803
+
+ step 204 is completed and loss is 0.6016450524330139
+
+ step 205 is completed and loss is 0.44516533613204956
+
+ step 206 is completed and loss is 0.5091807842254639
+
+ step 207 is completed and loss is 0.44921571016311646
+
+ step 208 is completed and loss is 0.21902212500572205
+
+ step 209 is completed and loss is 0.31429675221443176
+
+ step 210 is completed and loss is 0.2728232145309448
+
+ step 211 is completed and loss is 0.6302061080932617
+
+ step 212 is completed and loss is 0.496967077255249
+
+ step 213 is completed and loss is 0.324706494808197
+
+ step 214 is completed and loss is 0.5741301774978638
+
+ step 215 is completed and loss is 0.2426878958940506
+
+ step 216 is completed and loss is 0.4005335569381714
+
+ step 217 is completed and loss is 0.3785034418106079
+
+ step 218 is completed and loss is 0.5031826496124268
+
+ step 219 is completed and loss is 0.4120262861251831
+
+ step 220 is completed and loss is 0.3856896460056305
+
+ step 221 is completed and loss is 0.4380165636539459
+
+ step 222 is completed and loss is 0.5353391766548157
+
+ step 223 is completed and loss is 0.43900734186172485
+
+ step 224 is completed and loss is 0.2955925166606903
+
+ step 225 is completed and loss is 0.4353180229663849
+
+ step 226 is completed and loss is 0.40447142720222473
+
+ step 227 is completed and loss is 0.545134961605072
+
+ step 228 is completed and loss is 0.24651697278022766
+
+ step 229 is completed and loss is 0.4669535160064697
+
+ step 230 is completed and loss is 0.5040751099586487
+
+ step 231 is completed and loss is 0.6821134686470032
+
+ step 232 is completed and loss is 0.45068737864494324
+
+ step 233 is completed and loss is 0.4299795627593994
+
+ step 234 is completed and loss is 0.5637506246566772
+
+ step 235 is completed and loss is 0.39513859152793884
+
+ step 236 is completed and loss is 0.3385009467601776
+
+ step 237 is completed and loss is 0.46303221583366394
+
+ step 238 is completed and loss is 0.4165606200695038
+
+ step 239 is completed and loss is 0.4442875385284424
+
+ step 240 is completed and loss is 0.3695608377456665
+
+ step 241 is completed and loss is 0.3733293414115906
+
+ step 242 is completed and loss is 0.5145425796508789
+
+ step 243 is completed and loss is 0.49369773268699646
+
+ step 244 is completed and loss is 0.549587070941925
+
+ step 245 is completed and loss is 0.40079882740974426
+
+ step 246 is completed and loss is 0.5757354497909546
+
+ step 247 is completed and loss is 0.4910212457180023
+
+ step 248 is completed and loss is 0.7212879061698914
+
+ step 249 is completed and loss is 0.4619293510913849
+
+ step 250 is completed and loss is 0.44685107469558716
+
+ step 251 is completed and loss is 0.5475776791572571
+
+ step 252 is completed and loss is 0.510433554649353
+
+ step 253 is completed and loss is 0.4395209848880768
+
+ step 254 is completed and loss is 0.47160786390304565
+
+ step 255 is completed and loss is 0.4196031987667084
+
+ step 256 is completed and loss is 0.4700513184070587
+
+ step 257 is completed and loss is 0.41292834281921387
+
+ step 258 is completed and loss is 0.49457305669784546
+
+ step 259 is completed and loss is 0.49908825755119324
+
+ step 260 is completed and loss is 0.4055461287498474
+
+ step 261 is completed and loss is 0.45045655965805054
+
+ step 262 is completed and loss is 0.26488199830055237
+
+ step 263 is completed and loss is 0.5175772309303284
+
+ step 264 is completed and loss is 0.4300783574581146
+
+ step 265 is completed and loss is 0.34985849261283875
+
+ step 266 is completed and loss is 0.6079964637756348
+
+ step 267 is completed and loss is 0.5535878539085388
+
+ step 268 is completed and loss is 0.3223740756511688
+
+ step 269 is completed and loss is 0.42752331495285034
+
+ step 270 is completed and loss is 0.3637408912181854
+
+ step 271 is completed and loss is 0.5334939956665039
+
+ step 272 is completed and loss is 0.2983986735343933
+
+ step 273 is completed and loss is 0.425829142332077
+
+ step 274 is completed and loss is 0.5177968740463257
+
+ step 275 is completed and loss is 0.6259166598320007
+
+ step 276 is completed and loss is 0.44080525636672974
+
+ step 277 is completed and loss is 0.40041103959083557
+
+ step 278 is completed and loss is 0.6434398889541626
+
+ step 279 is completed and loss is 0.5436145663261414
+
+ step 280 is completed and loss is 0.46391531825065613
+
+ step 281 is completed and loss is 0.46078938245773315
+
+ step 282 is completed and loss is 0.4470013678073883
+
+ step 283 is completed and loss is 0.4572831690311432
+
+ step 284 is completed and loss is 0.24112002551555634
+
+ step 285 is completed and loss is 0.5214543342590332
+
+ step 286 is completed and loss is nan
+
+ step 287 is completed and loss is 0.39857909083366394
+
+ step 288 is completed and loss is 0.5123252868652344
+
+ step 289 is completed and loss is 0.35571983456611633
+
+ step 290 is completed and loss is 0.5447259545326233
+
+ step 291 is completed and loss is 0.5220648050308228
+
+ step 292 is completed and loss is 0.35435816645622253
+
+ step 293 is completed and loss is 0.933952271938324
+
+ step 294 is completed and loss is 0.266726553440094
+
+ step 295 is completed and loss is 0.37044593691825867
+
+ step 296 is completed and loss is 0.632233202457428
+
+ step 297 is completed and loss is 0.5208503603935242
+Training Epoch0:  66%|[34m██████▋   [0m| 299/450 [2:13:36<1:07:31, 26.83s/it]Training Epoch0:  67%|[34m██████▋   [0m| 300/450 [2:14:03<1:07:05, 26.84s/it]Training Epoch0:  67%|[34m██████▋   [0m| 301/450 [2:14:30<1:06:39, 26.84s/it]Training Epoch0:  67%|[34m██████▋   [0m| 302/450 [2:14:56<1:06:12, 26.84s/it]Training Epoch0:  67%|[34m██████▋   [0m| 303/450 [2:15:23<1:05:45, 26.84s/it]Training Epoch0:  68%|[34m██████▊   [0m| 304/450 [2:15:50<1:05:18, 26.84s/it]Training Epoch0:  68%|[34m██████▊   [0m| 305/450 [2:16:17<1:04:51, 26.84s/it]Training Epoch0:  68%|[34m██████▊   [0m| 306/450 [2:16:44<1:04:24, 26.83s/it]Training Epoch0:  68%|[34m██████▊   [0m| 307/450 [2:17:11<1:03:58, 26.84s/it]Training Epoch0:  68%|[34m██████▊   [0m| 308/450 [2:17:37<1:03:31, 26.84s/it]Training Epoch0:  69%|[34m██████▊   [0m| 309/450 [2:18:04<1:03:03, 26.84s/it]Training Epoch0:  69%|[34m██████▉   [0m| 310/450 [2:18:31<1:02:38, 26.84s/it]Training Epoch0:  69%|[34m██████▉   [0m| 311/450 [2:18:58<1:02:11, 26.84s/it]Training Epoch0:  69%|[34m██████▉   [0m| 312/450 [2:19:25<1:01:49, 26.88s/it]Training Epoch0:  70%|[34m██████▉   [0m| 313/450 [2:19:52<1:01:25, 26.90s/it]Training Epoch0:  70%|[34m██████▉   [0m| 314/450 [2:20:19<1:01:01, 26.92s/it]Training Epoch0:  70%|[34m███████   [0m| 315/450 [2:20:46<1:00:35, 26.93s/it]Training Epoch0:  70%|[34m███████   [0m| 316/450 [2:21:13<1:00:08, 26.93s/it]Training Epoch0:  70%|[34m███████   [0m| 317/450 [2:21:40<59:41, 26.93s/it]  Training Epoch0:  71%|[34m███████   [0m| 318/450 [2:22:07<59:14, 26.93s/it]Training Epoch0:  71%|[34m███████   [0m| 319/450 [2:22:34<58:47, 26.93s/it]Training Epoch0:  71%|[34m███████   [0m| 320/450 [2:23:00<58:20, 26.93s/it]Training Epoch0:  71%|[34m███████▏  [0m| 321/450 [2:23:27<57:53, 26.93s/it]Training Epoch0:  72%|[34m███████▏  [0m| 322/450 [2:23:54<57:26, 26.93s/it]Training Epoch0:  72%|[34m███████▏  [0m| 323/450 [2:24:21<57:00, 26.93s/it]Training Epoch0:  72%|[34m███████▏  [0m| 324/450 [2:24:48<56:34, 26.94s/it]Training Epoch0:  72%|[34m███████▏  [0m| 325/450 [2:25:15<56:08, 26.95s/it]Training Epoch0:  72%|[34m███████▏  [0m| 326/450 [2:25:42<55:41, 26.95s/it]Training Epoch0:  73%|[34m███████▎  [0m| 327/450 [2:26:09<55:14, 26.94s/it]Training Epoch0:  73%|[34m███████▎  [0m| 328/450 [2:26:36<54:44, 26.92s/it]Training Epoch0:  73%|[34m███████▎  [0m| 329/450 [2:27:03<54:18, 26.93s/it]Training Epoch0:  73%|[34m███████▎  [0m| 330/450 [2:27:30<53:51, 26.93s/it]Training Epoch0:  74%|[34m███████▎  [0m| 331/450 [2:27:57<53:24, 26.93s/it]Training Epoch0:  74%|[34m███████▍  [0m| 332/450 [2:28:24<52:57, 26.92s/it]Training Epoch0:  74%|[34m███████▍  [0m| 333/450 [2:28:51<52:30, 26.92s/it]Training Epoch0:  74%|[34m███████▍  [0m| 334/450 [2:29:17<52:02, 26.92s/it]Training Epoch0:  74%|[34m███████▍  [0m| 335/450 [2:29:44<51:35, 26.92s/it]Training Epoch0:  75%|[34m███████▍  [0m| 336/450 [2:30:11<51:08, 26.92s/it]Training Epoch0:  75%|[34m███████▍  [0m| 337/450 [2:30:38<50:43, 26.93s/it]Training Epoch0:  75%|[34m███████▌  [0m| 338/450 [2:31:05<50:15, 26.93s/it]Training Epoch0:  75%|[34m███████▌  [0m| 339/450 [2:31:32<49:49, 26.94s/it]Training Epoch0:  76%|[34m███████▌  [0m| 340/450 [2:31:59<49:22, 26.93s/it]Training Epoch0:  76%|[34m███████▌  [0m| 341/450 [2:32:26<48:55, 26.93s/it]Training Epoch0:  76%|[34m███████▌  [0m| 342/450 [2:32:53<48:28, 26.93s/it]Training Epoch0:  76%|[34m███████▌  [0m| 343/450 [2:33:20<48:01, 26.93s/it]Training Epoch0:  76%|[34m███████▋  [0m| 344/450 [2:33:47<47:34, 26.93s/it]Training Epoch0:  77%|[34m███████▋  [0m| 345/450 [2:34:14<47:09, 26.95s/it]Training Epoch0:  77%|[34m███████▋  [0m| 346/450 [2:34:41<46:43, 26.96s/it]Training Epoch0:  77%|[34m███████▋  [0m| 347/450 [2:35:08<46:17, 26.97s/it]Training Epoch0:  77%|[34m███████▋  [0m| 348/450 [2:35:35<45:50, 26.97s/it]Training Epoch0:  78%|[34m███████▊  [0m| 349/450 [2:36:02<45:25, 26.98s/it]Training Epoch0:  78%|[34m███████▊  [0m| 350/450 [2:36:29<44:55, 26.95s/it]Training Epoch0:  78%|[34m███████▊  [0m| 351/450 [2:36:55<44:25, 26.93s/it]Training Epoch0:  78%|[34m███████▊  [0m| 352/450 [2:37:22<43:56, 26.90s/it]Training Epoch0:  78%|[34m███████▊  [0m| 353/450 [2:37:49<43:28, 26.89s/it]Training Epoch0:  79%|[34m███████▊  [0m| 354/450 [2:38:16<43:01, 26.89s/it]Training Epoch0:  79%|[34m███████▉  [0m| 355/450 [2:38:43<42:32, 26.87s/it]Training Epoch0:  79%|[34m███████▉  [0m| 356/450 [2:39:10<42:05, 26.86s/it]Training Epoch0:  79%|[34m███████▉  [0m| 357/450 [2:39:37<41:37, 26.86s/it]Training Epoch0:  80%|[34m███████▉  [0m| 358/450 [2:40:03<41:09, 26.84s/it]Training Epoch0:  80%|[34m███████▉  [0m| 359/450 [2:40:30<40:40, 26.82s/it]Training Epoch0:  80%|[34m████████  [0m| 360/450 [2:40:57<40:12, 26.80s/it]Training Epoch0:  80%|[34m████████  [0m| 361/450 [2:41:24<39:44, 26.79s/it]Training Epoch0:  80%|[34m████████  [0m| 362/450 [2:41:50<39:18, 26.80s/it]Training Epoch0:  81%|[34m████████  [0m| 363/450 [2:42:17<38:51, 26.80s/it]Training Epoch0:  81%|[34m████████  [0m| 364/450 [2:42:44<38:24, 26.80s/it]Training Epoch0:  81%|[34m████████  [0m| 365/450 [2:43:11<37:58, 26.80s/it]Training Epoch0:  81%|[34m████████▏ [0m| 366/450 [2:43:38<37:30, 26.79s/it]Training Epoch0:  82%|[34m████████▏ [0m| 367/450 [2:44:04<37:03, 26.79s/it]Training Epoch0:  82%|[34m████████▏ [0m| 368/450 [2:44:31<36:37, 26.80s/it]Training Epoch0:  82%|[34m████████▏ [0m| 369/450 [2:44:58<36:12, 26.82s/it]Training Epoch0:  82%|[34m████████▏ [0m| 370/450 [2:45:25<35:45, 26.82s/it]Training Epoch0:  82%|[34m████████▏ [0m| 371/450 [2:45:52<35:19, 26.82s/it]Training Epoch0:  83%|[34m████████▎ [0m| 372/450 [2:46:19<34:51, 26.82s/it]Training Epoch0:  83%|[34m████████▎ [0m| 373/450 [2:46:45<34:24, 26.81s/it]Training Epoch0:  83%|[34m████████▎ [0m| 374/450 [2:47:12<33:58, 26.82s/it]Training Epoch0:  83%|[34m████████▎ [0m| 375/450 [2:47:39<33:31, 26.82s/it]Training Epoch0:  84%|[34m████████▎ [0m| 376/450 [2:48:06<33:05, 26.83s/it]Training Epoch0:  84%|[34m████████▍ [0m| 377/450 [2:48:33<32:39, 26.84s/it]Training Epoch0:  84%|[34m████████▍ [0m| 378/450 [2:49:00<32:12, 26.84s/it]Training Epoch0:  84%|[34m████████▍ [0m| 379/450 [2:49:26<31:44, 26.83s/it]Training Epoch0:  84%|[34m████████▍ [0m| 380/450 [2:49:53<31:18, 26.84s/it]Training Epoch0:  85%|[34m████████▍ [0m| 381/450 [2:50:20<30:51, 26.83s/it]Training Epoch0:  85%|[34m████████▍ [0m| 382/450 [2:50:47<30:25, 26.84s/it]Training Epoch0:  85%|[34m████████▌ [0m| 383/450 [2:51:14<29:57, 26.83s/it]Training Epoch0:  85%|[34m████████▌ [0m| 384/450 [2:51:41<29:31, 26.84s/it]Training Epoch0:  86%|[34m████████▌ [0m| 385/450 [2:52:08<29:04, 26.84s/it]Training Epoch0:  86%|[34m████████▌ [0m| 386/450 [2:52:34<28:37, 26.84s/it]Training Epoch0:  86%|[34m████████▌ [0m| 387/450 [2:53:01<28:10, 26.84s/it]Training Epoch0:  86%|[34m████████▌ [0m| 388/450 [2:53:28<27:44, 26.85s/it]Training Epoch0:  86%|[34m████████▋ [0m| 389/450 [2:53:55<27:18, 26.86s/it]Training Epoch0:  87%|[34m████████▋ [0m| 390/450 [2:54:22<26:51, 26.85s/it]Training Epoch0:  87%|[34m████████▋ [0m| 391/450 [2:54:49<26:23, 26.84s/it]Training Epoch0:  87%|[34m████████▋ [0m| 392/450 [2:55:15<25:56, 26.83s/it]Training Epoch0:  87%|[34m████████▋ [0m| 393/450 [2:55:42<25:28, 26.82s/it]Training Epoch0:  88%|[34m████████▊ [0m| 394/450 [2:56:09<25:01, 26.82s/it]Training Epoch0:  88%|[34m████████▊ [0m| 395/450 [2:56:36<24:34, 26.81s/it]Training Epoch0:  88%|[34m████████▊ [0m| 396/450 [2:57:03<24:07, 26.81s/it]Training Epoch0:  88%|[34m████████▊ [0m| 397/450 [2:57:29<23:40, 26.81s/it]Training Epoch0:  88%|[34m████████▊ [0m| 398/450 [2:57:56<23:13, 26.80s/it]Training Epoch0:  89%|[34m████████▊ [0m| 399/450 [2:58:23<22:46, 26.80s/it]Training Epoch0:  89%|[34m████████▉ [0m| 400/450 [2:58:50<22:19, 26.79s/it]Training Epoch0:  89%|[34m████████▉ [0m| 401/450 [2:59:17<21:52, 26.78s/it]Training Epoch0:  89%|[34m████████▉ [0m| 402/450 [2:59:43<21:25, 26.78s/it]Training Epoch0:  90%|[34m████████▉ [0m| 403/450 [3:00:10<20:58, 26.78s/it]Training Epoch0:  90%|[34m████████▉ [0m| 404/450 [3:00:37<20:32, 26.79s/it]Training Epoch0:  90%|[34m█████████ [0m| 405/450 [3:01:04<20:05, 26.80s/it]Training Epoch0:  90%|[34m█████████ [0m| 406/450 [3:01:31<19:39, 26.80s/it]Training Epoch0:  90%|[34m█████████ [0m| 407/450 [3:01:57<19:12, 26.80s/it]Training Epoch0:  91%|[34m█████████ [0m| 408/450 [3:02:24<18:45, 26.80s/it]Training Epoch0:  91%|[34m█████████ [0m| 409/450 [3:02:51<18:18, 26.80s/it]Training Epoch0:  91%|[34m█████████ [0m| 410/450 [3:03:18<17:52, 26.80s/it]Training Epoch0:  91%|[34m█████████▏[0m| 411/450 [3:03:45<17:25, 26.80s/it]Training Epoch0:  92%|[34m█████████▏[0m| 412/450 [3:04:11<16:58, 26.80s/it]Training Epoch0:  92%|[34m█████████▏[0m| 413/450 [3:04:38<16:31, 26.79s/it]Training Epoch0:  92%|[34m█████████▏[0m| 414/450 [3:05:05<16:04, 26.79s/it]Training Epoch0:  92%|[34m█████████▏[0m| 415/450 [3:05:32<15:37, 26.78s/it]Training Epoch0:  92%|[34m█████████▏[0m| 416/450 [3:05:58<15:10, 26.78s/it]Training Epoch0:  93%|[34m█████████▎[0m| 417/450 [3:06:25<14:43, 26.77s/it]Training Epoch0:  93%|[34m█████████▎[0m| 418/450 [3:06:52<14:16, 26.78s/it]Number of tokens in the example:  1809
+Number of tokens in the example:  3011
+Number of tokens in the example:  3028
+Number of tokens in the example:  4003
+Number of tokens in the example:  4922
+Number of tokens in the example:  3180
+Number of tokens in the example:  3488
+Number of tokens in the example:  3979
+Number of tokens in the example:  2525
+Number of tokens in the example:  3169
+Number of tokens in the example:  3468
+Number of tokens in the example:  3018
+Number of tokens in the example:  2314
+Number of tokens in the example:  2382
+Number of tokens in the example:  2917
+Number of tokens in the example:  3827
+Number of tokens in the example:  3347
+Number of tokens in the example:  4236
+Number of tokens in the example:  2872
+Number of tokens in the example:  3188
+Number of tokens in the example:  2670
+Number of tokens in the example:  2346
+Number of tokens in the example:  3000
+Number of tokens in the example:  3783
+Number of tokens in the example:  2774
+Number of tokens in the example:  5013
+Number of tokens in the example:  2887
+Number of tokens in the example:  3135
+Number of tokens in the example:  2768
+Number of tokens in the example:  3575
+Number of tokens in the example:  4272
+Number of tokens in the example:  2727
+Number of tokens in the example:  3272
+Number of tokens in the example:  3719
+Number of tokens in the example:  3499
+Number of tokens in the example:  2984
+Number of tokens in the example:  2621
+Number of tokens in the example:  2918
+Number of tokens in the example:  3072
+Number of tokens in the example:  2366
+Number of tokens in the example:  3996
+Number of tokens in the example:  3480
+Number of tokens in the example:  2435
+Number of tokens in the example:  4028
+Number of tokens in the example:  2490
+Number of tokens in the example:  2632
+Number of tokens in the example:  3691
+Number of tokens in the example:  3528
+Number of tokens in the example:  2485
+Number of tokens in the example:  2034
+Number of tokens in the example:  3164
+Number of tokens in the example:  4465
+Number of tokens in the example:  2675
+Number of tokens in the example:  3492
+Number of tokens in the example:  3031
+Number of tokens in the example:  3589
+Number of tokens in the example:  2747
+Number of tokens in the example:  2041
+Number of tokens in the example:  5697
+Number of tokens in the example:  2729
+Number of tokens in the example:  3447
+Number of tokens in the example:  3055
+Number of tokens in the example:  3270
+Number of tokens in the example:  2640
+Number of tokens in the example:  2676
+Number of tokens in the example:  2824
+Number of tokens in the example:  2545
+Number of tokens in the example:  2795
+Number of tokens in the example:  5094
+Number of tokens in the example:  3430
+Number of tokens in the example:  3357
+Number of tokens in the example:  3376
+Number of tokens in the example:  3947
+Number of tokens in the example:  2637
+Number of tokens in the example:  3973
+Number of tokens in the example:  3300
+Number of tokens in the example:  7766
+Number of tokens in the example:  3162
+Number of tokens in the example:  3826
+Number of tokens in the example:  4092
+Number of tokens in the example:  2935
+Number of tokens in the example:  2956
+Number of tokens in the example:  2866
+Number of tokens in the example:  3339
+Number of tokens in the example:  4992
+Number of tokens in the example:  3533
+Number of tokens in the example:  2614
+Number of tokens in the example:  3018
+Number of tokens in the example:  2532
+Number of tokens in the example:  2402
+Number of tokens in the example:  3062
+Number of tokens in the example:  2383
+Number of tokens in the example:  5202
+Number of tokens in the example:  3089
+Number of tokens in the example:  2915
+Number of tokens in the example:  5257
+Number of tokens in the example:  3523
+Number of tokens in the example:  3113
+Number of tokens in the example:  2506
+Number of tokens in the example:  4056
+Number of tokens in the example:  2413
+Number of tokens in the example:  3846
+Number of tokens in the example:  2380
+Number of tokens in the example:  3141
+Number of tokens in the example:  2889
+Number of tokens in the example:  2635
+Number of tokens in the example:  3604
+Number of tokens in the example:  2441
+Number of tokens in the example:  3221
+Number of tokens in the example:  2676
+Number of tokens in the example:  2660
+Number of tokens in the example:  3417
+Number of tokens in the example:  2890
+Number of tokens in the example:  4400
+Number of tokens in the example:  4466
+Number of tokens in the example:  2894
+Number of tokens in the example:  2387
+Number of tokens in the example:  2243
+Number of tokens in the example:  5587
+Number of tokens in the example:  2737
+Number of tokens in the example:  3200
+Number of tokens in the example:  3482
+Number of tokens in the example:  3465
+Number of tokens in the example:  2675
+Number of tokens in the example:  3342
+Number of tokens in the example:  3305
+Number of tokens in the example:  2934
+Number of tokens in the example:  3203
+Number of tokens in the example:  4308
+Number of tokens in the example:  4216
+Number of tokens in the example:  2453
+Number of tokens in the example:  3605
+Number of tokens in the example:  4288
+Number of tokens in the example:  3061
+Number of tokens in the example:  2704
+Number of tokens in the example:  3090
+Number of tokens in the example:  3303
+Number of tokens in the example:  3240
+Number of tokens in the example:  3516
+Number of tokens in the example:  3112
+Number of tokens in the example:  3392
+Number of tokens in the example:  2411
+Number of tokens in the example:  3526
+Number of tokens in the example:  3224
+Number of tokens in the example:  2711
+Number of tokens in the example:  2697
+Number of tokens in the example:  3034
+Number of tokens in the example:  3810
+Number of tokens in the example:  3434
+Number of tokens in the example:  2685
+Number of tokens in the example:  2386
+Number of tokens in the example:  3429
+Number of tokens in the example:  2939
+Number of tokens in the example:  3763
+Number of tokens in the example:  4193
+Number of tokens in the example:  2497
+Number of tokens in the example:  2469
+Number of tokens in the example:  3319
+Number of tokens in the example:  4084
+Number of tokens in the example:  3897
+Number of tokens in the example:  3560
+Number of tokens in the example:  2521
+Number of tokens in the example:  3923
+Number of tokens in the example:  3034
+Number of tokens in the example:  3047
+Number of tokens in the example:  3980
+Number of tokens in the example:  3784
+Number of tokens in the example:  4076
+Number of tokens in the example:  1943
+Number of tokens in the example:  3684
+Number of tokens in the example:  2529
+Number of tokens in the example:  3545
+Number of tokens in the example:  2241
+Number of tokens in the example:  3307
+Number of tokens in the example:  3856
+Number of tokens in the example:  1995
+Number of tokens in the example:  3383
+Number of tokens in the example:  4538
+Number of tokens in the example:  4366
+Number of tokens in the example:  4631
+Number of tokens in the example:  2477
+Number of tokens in the example:  5259
+Number of tokens in the example:  3357
+Number of tokens in the example:  2908
+Number of tokens in the example:  4860
+Number of tokens in the example:  4184
+Number of tokens in the example:  3310
+Number of tokens in the example:  10177
+Number of tokens in the example:  2860
+Number of tokens in the example:  2482
+Number of tokens in the example:  2573
+Number of tokens in the example:  3954
+Number of tokens in the example:  3063
+Number of tokens in the example:  3442
+Number of tokens in the example:  4991
+Number of tokens in the example:  3331
+Number of tokens in the example:  3465
+Number of tokens in the example:  2371
+Number of tokens in the example:  2494
+Number of tokens in the example:  4076
+Number of tokens in the example:  2151
+Number of tokens in the example:  3484
+Number of tokens in the example:  3369
+Number of tokens in the example:  3544
+Number of tokens in the example:  3109
+Number of tokens in the example:  2494
+Number of tokens in the example:  2155
+Number of tokens in the example:  2987
+Number of tokens in the example:  3495
+Number of tokens in the example:  2988
+Training Epoch0:  93%|[34m█████████▎[0m| 419/450 [3:07:19<13:50, 26.78s/it]Training Epoch0:  93%|[34m█████████▎[0m| 420/450 [3:07:46<13:23, 26.78s/it]Training Epoch0:  94%|[34m█████████▎[0m| 421/450 [3:08:12<12:56, 26.79s/it]Training Epoch0:  94%|[34m█████████▍[0m| 422/450 [3:08:39<12:30, 26.79s/it]Training Epoch0:  94%|[34m█████████▍[0m| 423/450 [3:09:06<12:03, 26.79s/it]Training Epoch0:  94%|[34m█████████▍[0m| 424/450 [3:09:33<11:36, 26.80s/it]Training Epoch0:  94%|[34m█████████▍[0m| 425/450 [3:10:00<11:10, 26.81s/it]Training Epoch0:  95%|[34m█████████▍[0m| 426/450 [3:10:26<10:43, 26.81s/it]Training Epoch0:  95%|[34m█████████▍[0m| 427/450 [3:10:53<10:16, 26.81s/it]Training Epoch0:  95%|[34m█████████▌[0m| 428/450 [3:11:20<09:49, 26.82s/it]Training Epoch0:  95%|[34m█████████▌[0m| 429/450 [3:11:47<09:23, 26.81s/it]Training Epoch0:  96%|[34m█████████▌[0m| 430/450 [3:12:14<08:56, 26.81s/it]Training Epoch0:  96%|[34m█████████▌[0m| 431/450 [3:12:40<08:29, 26.82s/it]Training Epoch0:  96%|[34m█████████▌[0m| 432/450 [3:13:07<08:02, 26.82s/it]Training Epoch0:  96%|[34m█████████▌[0m| 433/450 [3:13:33<07:32, 26.62s/it]Training Epoch0:  96%|[34m█████████▋[0m| 434/450 [3:14:00<07:06, 26.67s/it]Training Epoch0:  97%|[34m█████████▋[0m| 435/450 [3:14:27<06:40, 26.71s/it]Training Epoch0:  97%|[34m█████████▋[0m| 436/450 [3:14:54<06:14, 26.75s/it]Training Epoch0:  97%|[34m█████████▋[0m| 437/450 [3:15:21<05:48, 26.78s/it]Training Epoch0:  97%|[34m█████████▋[0m| 438/450 [3:15:48<05:21, 26.79s/it]Training Epoch0:  98%|[34m█████████▊[0m| 439/450 [3:16:14<04:54, 26.80s/it]Training Epoch0:  98%|[34m█████████▊[0m| 440/450 [3:16:41<04:28, 26.80s/it]Training Epoch0:  98%|[34m█████████▊[0m| 441/450 [3:17:08<04:01, 26.81s/it]Training Epoch0:  98%|[34m█████████▊[0m| 442/450 [3:17:35<03:34, 26.82s/it]Training Epoch0:  98%|[34m█████████▊[0m| 443/450 [3:18:02<03:07, 26.83s/it]Training Epoch0:  99%|[34m█████████▊[0m| 444/450 [3:18:29<02:41, 26.84s/it]Training Epoch0:  99%|[34m█████████▉[0m| 445/450 [3:18:55<02:14, 26.85s/it]Training Epoch0:  99%|[34m█████████▉[0m| 446/450 [3:19:22<01:47, 26.87s/it]
+ step 298 is completed and loss is 0.4246959686279297
+
+ step 299 is completed and loss is 0.328419029712677
+
+ step 300 is completed and loss is 0.41205376386642456
+
+ step 301 is completed and loss is 0.5043308734893799
+
+ step 302 is completed and loss is 0.37920942902565
+
+ step 303 is completed and loss is 0.5024101734161377
+
+ step 304 is completed and loss is 0.32296258211135864
+
+ step 305 is completed and loss is 0.38656654953956604
+
+ step 306 is completed and loss is 0.5410965085029602
+
+ step 307 is completed and loss is 0.5221463441848755
+
+ step 308 is completed and loss is 0.5637659430503845
+
+ step 309 is completed and loss is 0.5811501741409302
+
+ step 310 is completed and loss is 0.7368146181106567
+
+ step 311 is completed and loss is 0.4799881875514984
+
+ step 312 is completed and loss is 0.6671971082687378
+
+ step 313 is completed and loss is 0.93343186378479
+
+ step 314 is completed and loss is 0.551960825920105
+
+ step 315 is completed and loss is 0.6759269833564758
+
+ step 316 is completed and loss is 0.45259544253349304
+
+ step 317 is completed and loss is 0.5595722794532776
+
+ step 318 is completed and loss is 0.4728301167488098
+
+ step 319 is completed and loss is 0.6294630765914917
+
+ step 320 is completed and loss is 0.45238399505615234
+
+ step 321 is completed and loss is 0.37411564588546753
+
+ step 322 is completed and loss is 0.4935756325721741
+
+ step 323 is completed and loss is 0.47009122371673584
+
+ step 324 is completed and loss is 0.31653904914855957
+
+ step 325 is completed and loss is 0.5964442491531372
+
+ step 326 is completed and loss is 0.3167586326599121
+
+ step 327 is completed and loss is 0.7289782166481018
+
+ step 328 is completed and loss is 0.20467129349708557
+
+ step 329 is completed and loss is 0.4239495098590851
+
+ step 330 is completed and loss is 0.4022194743156433
+
+ step 331 is completed and loss is 0.41249245405197144
+
+ step 332 is completed and loss is 0.5635788440704346
+
+ step 333 is completed and loss is 0.5542628765106201
+
+ step 334 is completed and loss is 0.37619999051094055
+
+ step 335 is completed and loss is 0.43721649050712585
+
+ step 336 is completed and loss is 0.2836376130580902
+
+ step 337 is completed and loss is 0.46028077602386475
+
+ step 338 is completed and loss is 0.3870339095592499
+
+ step 339 is completed and loss is 0.4123367667198181
+
+ step 340 is completed and loss is 0.3726769983768463
+
+ step 341 is completed and loss is 0.6305209398269653
+
+ step 342 is completed and loss is 0.41335049271583557
+
+ step 343 is completed and loss is 0.36086907982826233
+
+ step 344 is completed and loss is 0.44117334485054016
+
+ step 345 is completed and loss is 0.41313278675079346
+
+ step 346 is completed and loss is 0.48813727498054504
+
+ step 347 is completed and loss is 0.4456830620765686
+
+ step 348 is completed and loss is 0.47154417634010315
+
+ step 349 is completed and loss is 0.4901878237724304
+
+ step 350 is completed and loss is 0.5567753314971924
+
+ step 351 is completed and loss is 0.4299893379211426
+
+ step 352 is completed and loss is 0.40785151720046997
+
+ step 353 is completed and loss is 0.24580644071102142
+
+ step 354 is completed and loss is 0.3987165689468384
+
+ step 355 is completed and loss is 0.45458948612213135
+
+ step 356 is completed and loss is 0.46526414155960083
+
+ step 357 is completed and loss is 0.28075268864631653
+
+ step 358 is completed and loss is 0.43506187200546265
+
+ step 359 is completed and loss is 0.38545089960098267
+
+ step 360 is completed and loss is 0.42099153995513916
+
+ step 361 is completed and loss is 0.38037991523742676
+
+ step 362 is completed and loss is 0.39999058842658997
+
+ step 363 is completed and loss is 0.34135526418685913
+
+ step 364 is completed and loss is 0.5364300608634949
+
+ step 365 is completed and loss is 0.42794254422187805
+
+ step 366 is completed and loss is 0.5000212788581848
+
+ step 367 is completed and loss is 0.33826297521591187
+
+ step 368 is completed and loss is 0.44047603011131287
+
+ step 369 is completed and loss is 0.3757305145263672
+
+ step 370 is completed and loss is 0.576797366142273
+
+ step 371 is completed and loss is 0.45571932196617126
+
+ step 372 is completed and loss is 0.28130021691322327
+
+ step 373 is completed and loss is 0.33845457434654236
+
+ step 374 is completed and loss is 0.5430217385292053
+
+ step 375 is completed and loss is 0.3997783958911896
+
+ step 376 is completed and loss is 0.43837448954582214
+
+ step 377 is completed and loss is 0.43394970893859863
+
+ step 378 is completed and loss is 0.3682464063167572
+
+ step 379 is completed and loss is 0.48499420285224915
+
+ step 380 is completed and loss is 0.5872093439102173
+
+ step 381 is completed and loss is 0.42352283000946045
+
+ step 382 is completed and loss is 0.4406112730503082
+
+ step 383 is completed and loss is 0.46234434843063354
+
+ step 384 is completed and loss is 0.535480260848999
+
+ step 385 is completed and loss is 0.63606196641922
+
+ step 386 is completed and loss is 0.45472314953804016
+
+ step 387 is completed and loss is 0.43303853273391724
+
+ step 388 is completed and loss is 0.3938849866390228
+
+ step 389 is completed and loss is 0.3705558776855469
+
+ step 390 is completed and loss is 0.45435452461242676
+
+ step 391 is completed and loss is 0.5144148468971252
+
+ step 392 is completed and loss is 0.4291374087333679
+
+ step 393 is completed and loss is 0.630733847618103
+
+ step 394 is completed and loss is 0.3549940288066864
+
+ step 395 is completed and loss is 0.41798803210258484
+
+ step 396 is completed and loss is 0.36641114950180054
+
+ step 397 is completed and loss is nan
+
+ step 398 is completed and loss is 0.32284221053123474
+
+ step 399 is completed and loss is 0.6184461712837219
+
+ step 400 is completed and loss is 0.5593249201774597
+
+ step 401 is completed and loss is 0.3178650140762329
+
+ step 402 is completed and loss is 0.35571420192718506
+
+ step 403 is completed and loss is 0.2900295853614807
+
+ step 404 is completed and loss is 0.29477131366729736
+
+ step 405 is completed and loss is 0.37858617305755615
+
+ step 406 is completed and loss is 0.40649840235710144
+
+ step 407 is completed and loss is 0.7431829571723938
+
+ step 408 is completed and loss is 0.4322223365306854
+
+ step 409 is completed and loss is 0.34645435214042664
+
+ step 410 is completed and loss is 0.4235856235027313
+
+ step 411 is completed and loss is 0.4152179956436157
+
+ step 412 is completed and loss is 0.28099390864372253
+
+ step 413 is completed and loss is 0.3356693685054779
+
+ step 414 is completed and loss is 0.42698514461517334
+
+ step 415 is completed and loss is 0.4549974203109741
+
+ step 416 is completed and loss is 0.4536876082420349
+
+ step 417 is completed and loss is 0.3545796871185303
+
+ step 418 is completed and loss is 0.6081019043922424
+
+ step 419 is completed and loss is 0.5287039279937744
+
+ step 420 is completed and loss is 0.5224152207374573
+
+ step 421 is completed and loss is 0.44388559460639954
+
+ step 422 is completed and loss is 0.5065013766288757
+
+ step 423 is completed and loss is 0.23259305953979492
+
+ step 424 is completed and loss is 0.549672544002533
+
+ step 425 is completed and loss is 0.4091353416442871
+
+ step 426 is completed and loss is 0.5156330466270447
+
+ step 427 is completed and loss is 0.49403414130210876
+
+ step 428 is completed and loss is 0.29317647218704224
+
+ step 429 is completed and loss is 0.37482330203056335
+
+ step 430 is completed and loss is 0.46527335047721863
+
+ step 431 is completed and loss is 0.3908176124095917
+
+ step 432 is completed and loss is 0.5787281394004822
+
+ step 433 is completed and loss is 0.43169519305229187
+
+ step 434 is completed and loss is 0.45588892698287964
+
+ step 435 is completed and loss is 0.46444472670555115
+
+ step 436 is completed and loss is 0.4911018908023834
+
+ step 437 is completed and loss is 0.3204895257949829
+
+ step 438 is completed and loss is 0.46566110849380493
+
+ step 439 is completed and loss is 0.26855096220970154
+
+ step 440 is completed and loss is 0.21756218373775482
+
+ step 441 is completed and loss is 0.5532945394515991
+
+ step 442 is completed and loss is 0.2045034021139145
+
+ step 443 is completed and loss is 0.4330487549304962
+
+ step 444 is completed and loss is 0.3720313608646393
+
+ step 445 is completed and loss is 0.5066863894462585
+Training Epoch0:  99%|[34m█████████▉[0m| 447/450 [3:19:49<01:20, 26.87s/it]Training Epoch0: 100%|[34m█████████▉[0m| 448/450 [3:20:16<00:53, 26.88s/it]Training Epoch0: 100%|[34m█████████▉[0m| 449/450 [3:20:43<00:26, 26.89s/it]Training Epoch0: 100%|[34m██████████[0m| 450/450 [3:21:10<00:00, 26.89s/it]Number of tokens in the example:  3852
+Number of tokens in the example:  4405
+Number of tokens in the example:  3419
+Number of tokens in the example:  4443
+Number of tokens in the example:  2739
+Number of tokens in the example:  3719
+Number of tokens in the example:  4326
+Number of tokens in the example:  5112
+Number of tokens in the example:  2373
+Number of tokens in the example:  3067
+Number of tokens in the example:  4809
+Number of tokens in the example:  3419
+Number of tokens in the example:  2852
+Number of tokens in the example:  2660
+Number of tokens in the example:  2702
+Number of tokens in the example:  3930
+Number of tokens in the example:  3277
+Number of tokens in the example:  2606
+Number of tokens in the example:  3358
+Number of tokens in the example:  3541
+Number of tokens in the example:  2564
+Number of tokens in the example:  2066
+Number of tokens in the example:  4294
+Number of tokens in the example:  4891
+Number of tokens in the example:  3260
+Number of tokens in the example:  2260
+Number of tokens in the example:  3742
+Number of tokens in the example:  2460
+Number of tokens in the example:  3916
+Number of tokens in the example:  4133
+Training Epoch0: 100%|[34m██████████[0m| 450/450 [3:21:10<00:00, 26.82s/it]
+
+ step 446 is completed and loss is 0.3586852550506592
+
+ step 447 is completed and loss is 0.36351871490478516
+
+ step 448 is completed and loss is 0.4469309449195862
+
+ step 449 is completed and loss is 0.3722914159297943
+Max CUDA memory allocated was 50 GB
+Max CUDA memory reserved was 58 GB
+Peak active CUDA memory was 50 GB
+Cuda Malloc retires : 0
+CPU Total Peak Memory consumed during the train (max): 4 GB
+evaluating Epoch:   0%|[32m          [0m| 0/50 [00:00<?, ?it/s]evaluating Epoch:   2%|[32m▏         [0m| 1/50 [00:05<04:32,  5.56s/it]evaluating Epoch:   4%|[32m▍         [0m| 2/50 [00:10<04:23,  5.49s/it]evaluating Epoch:   6%|[32m▌         [0m| 3/50 [00:16<04:16,  5.46s/it]evaluating Epoch:   8%|[32m▊         [0m| 4/50 [00:21<04:10,  5.44s/it]evaluating Epoch:  10%|[32m█         [0m| 5/50 [00:27<04:04,  5.44s/it]evaluating Epoch:  12%|[32m█▏        [0m| 6/50 [00:32<03:59,  5.43s/it]evaluating Epoch:  14%|[32m█▍        [0m| 7/50 [00:38<03:53,  5.43s/it]evaluating Epoch:  16%|[32m█▌        [0m| 8/50 [00:43<03:48,  5.43s/it]evaluating Epoch:  18%|[32m█▊        [0m| 9/50 [00:48<03:42,  5.44s/it]evaluating Epoch:  20%|[32m██        [0m| 10/50 [00:54<03:37,  5.44s/it]evaluating Epoch:  22%|[32m██▏       [0m| 11/50 [00:59<03:32,  5.44s/it]evaluating Epoch:  24%|[32m██▍       [0m| 12/50 [01:05<03:26,  5.44s/it]evaluating Epoch:  26%|[32m██▌       [0m| 13/50 [01:10<03:21,  5.43s/it]evaluating Epoch:  28%|[32m██▊       [0m| 14/50 [01:16<03:15,  5.43s/it]evaluating Epoch:  30%|[32m███       [0m| 15/50 [01:21<03:09,  5.42s/it]evaluating Epoch:  32%|[32m███▏      [0m| 16/50 [01:27<03:04,  5.43s/it]evaluating Epoch:  34%|[32m███▍      [0m| 17/50 [01:32<02:59,  5.43s/it]evaluating Epoch:  36%|[32m███▌      [0m| 18/50 [01:37<02:53,  5.43s/it]evaluating Epoch:  38%|[32m███▊      [0m| 19/50 [01:43<02:48,  5.43s/it]evaluating Epoch:  40%|[32m████      [0m| 20/50 [01:48<02:42,  5.42s/it]evaluating Epoch:  42%|[32m████▏     [0m| 21/50 [01:54<02:36,  5.41s/it]evaluating Epoch:  44%|[32m████▍     [0m| 22/50 [01:59<02:31,  5.40s/it]evaluating Epoch:  46%|[32m████▌     [0m| 23/50 [02:04<02:25,  5.40s/it]evaluating Epoch:  48%|[32m████▊     [0m| 24/50 [02:10<02:21,  5.42s/it]evaluating Epoch:  50%|[32m█████     [0m| 25/50 [02:15<02:15,  5.44s/it]evaluating Epoch:  52%|[32m█████▏    [0m| 26/50 [02:21<02:10,  5.44s/it]evaluating Epoch:  54%|[32m█████▍    [0m| 27/50 [02:26<02:05,  5.46s/it]evaluating Epoch:  56%|[32m█████▌    [0m| 28/50 [02:32<02:00,  5.47s/it]evaluating Epoch:  58%|[32m█████▊    [0m| 29/50 [02:37<01:54,  5.46s/it]evaluating Epoch:  60%|[32m██████    [0m| 30/50 [02:43<01:49,  5.48s/it]evaluating Epoch:  62%|[32m██████▏   [0m| 31/50 [02:48<01:44,  5.49s/it]evaluating Epoch:  64%|[32m██████▍   [0m| 32/50 [02:54<01:38,  5.48s/it]evaluating Epoch:  66%|[32m██████▌   [0m| 33/50 [02:59<01:33,  5.48s/it]evaluating Epoch:  68%|[32m██████▊   [0m| 34/50 [03:05<01:27,  5.47s/it]evaluating Epoch:  70%|[32m███████   [0m| 35/50 [03:10<01:22,  5.47s/it]evaluating Epoch:  72%|[32m███████▏  [0m| 36/50 [03:16<01:16,  5.47s/it]evaluating Epoch:  74%|[32m███████▍  [0m| 37/50 [03:21<01:11,  5.47s/it]evaluating Epoch:  76%|[32m███████▌  [0m| 38/50 [03:27<01:05,  5.48s/it]evaluating Epoch:  78%|[32m███████▊  [0m| 39/50 [03:32<01:00,  5.48s/it]evaluating Epoch:  80%|[32m████████  [0m| 40/50 [03:38<00:54,  5.48s/it]evaluating Epoch:  82%|[32m████████▏ [0m| 41/50 [03:43<00:49,  5.49s/it]evaluating Epoch:  84%|[32m████████▍ [0m| 42/50 [03:49<00:43,  5.48s/it]evaluating Epoch:  86%|[32m████████▌ [0m| 43/50 [03:54<00:38,  5.48s/it]evaluating Epoch:  88%|[32m████████▊ [0m| 44/50 [03:59<00:32,  5.49s/it]evaluating Epoch:  90%|[32m█████████ [0m| 45/50 [04:05<00:27,  5.49s/it]evaluating Epoch:  92%|[32m█████████▏[0m| 46/50 [04:10<00:21,  5.48s/it]evaluating Epoch:  94%|[32m█████████▍[0m| 47/50 [04:16<00:16,  5.48s/it]evaluating Epoch:  96%|[32m█████████▌[0m| 48/50 [04:21<00:10,  5.48s/it]evaluating Epoch:  98%|[32m█████████▊[0m| 49/50 [04:27<00:05,  5.47s/it]evaluating Epoch: 100%|[32m██████████[0m| 50/50 [04:32<00:00,  5.46s/it]Number of tokens in the example:  3445
+Number of tokens in the example:  3384
+Number of tokens in the example:  2718
+Number of tokens in the example:  3081
+Number of tokens in the example:  1845
+Number of tokens in the example:  2530
+Number of tokens in the example:  2405
+Number of tokens in the example:  4751
+Number of tokens in the example:  3331
+Number of tokens in the example:  3569
+Number of tokens in the example:  2362
+Number of tokens in the example:  3569
+Number of tokens in the example:  3371
+Number of tokens in the example:  3594
+Number of tokens in the example:  2466
+Number of tokens in the example:  4699
+Number of tokens in the example:  3947
+Number of tokens in the example:  2918
+Number of tokens in the example:  3201
+Number of tokens in the example:  2922
+Number of tokens in the example:  2509
+Number of tokens in the example:  3227
+Number of tokens in the example:  2774
+Number of tokens in the example:  4604
+Number of tokens in the example:  3477
+Number of tokens in the example:  2359
+Number of tokens in the example:  2446
+Number of tokens in the example:  3764
+Number of tokens in the example:  2491
+Number of tokens in the example:  4081
+Number of tokens in the example:  3876
+Number of tokens in the example:  2548
+Number of tokens in the example:  2694
+Number of tokens in the example:  2124
+Number of tokens in the example:  3898
+Number of tokens in the example:  3085
+Number of tokens in the example:  3749
+Number of tokens in the example:  4236
+Number of tokens in the example:  3600
+Number of tokens in the example:  2653
+Number of tokens in the example:  3738
+Number of tokens in the example:  3074
+Number of tokens in the example:  2970
+Number of tokens in the example:  3247
+Number of tokens in the example:  4485
+Number of tokens in the example:  3255
+Number of tokens in the example:  2700
+Number of tokens in the example:  4023
+Number of tokens in the example:  2640
+Number of tokens in the example:  2293
+evaluating Epoch: 100%|[32m██████████[0m| 50/50 [04:32<00:00,  5.46s/it]
+ eval_ppl=tensor(1.5824, device='cuda:0') eval_epoch_loss=tensor(0.4589, device='cuda:0')
+we are about to save the PEFT modules
+PEFT modules are saved in FT-vicuna-13b-v1.5-16k directory
+best eval loss on epoch 0 is 0.45891502499580383
+Epoch 1: train_perplexity=nan, train_epoch_loss=nan, epcoh time 12071.294350045s
+Training Epoch1:   0%|[34m          [0m| 0/450 [00:00<?, ?it/s]Training Epoch1:   0%|[34m          [0m| 1/450 [00:26<3:21:14, 26.89s/it]Training Epoch1:   0%|[34m          [0m| 2/450 [00:53<3:20:09, 26.81s/it]Number of tokens in the example:  2784
+Number of tokens in the example:  2593
+Number of tokens in the example:  3416
+Number of tokens in the example:  5502
+Number of tokens in the example:  2505
+Training Epoch1:   0%|[34m          [0m| 2/450 [01:19<4:58:39, 40.00s/it]
+
+ step 0 is completed and loss is 0.382497638463974
+
+ step 1 is completed and loss is 0.33298712968826294
 Traceback (most recent call last):
-  File "/mnt/cg-experimental/llama-recipes/llama_finetuning.py", line 253, in <module>
+  File "/root/llama-recipes/llama_finetuning.py", line 253, in <module>
     fire.Fire(main)
-  File "/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/fire/core.py", line 141, in Fire
+  File "/root/miniconda3/envs/llama_ft/lib/python3.10/site-packages/fire/core.py", line 141, in Fire
     component_trace = _Fire(component, args, parsed_flag_args, context, name)
-  File "/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/fire/core.py", line 475, in _Fire
+  File "/root/miniconda3/envs/llama_ft/lib/python3.10/site-packages/fire/core.py", line 475, in _Fire
     component, remaining_args = _CallAndUpdateTrace(
-  File "/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/fire/core.py", line 691, in _CallAndUpdateTrace
+  File "/root/miniconda3/envs/llama_ft/lib/python3.10/site-packages/fire/core.py", line 691, in _CallAndUpdateTrace
     component = fn(*varargs, **kwargs)
-  File "/mnt/cg-experimental/llama-recipes/llama_finetuning.py", line 236, in main
+  File "/root/llama-recipes/llama_finetuning.py", line 236, in main
     results = train(
-  File "/mnt/cg-experimental/llama-recipes/utils/train_utils.py", line 92, in train
-    loss = model(**batch).loss
-  File "/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/peft/peft_model.py", line 931, in forward
-    return self.base_model(
-  File "/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/peft/tuners/tuners_utils.py", line 94, in forward
-    return self.model.forward(*args, **kwargs)
-  File "/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/accelerate/hooks.py", line 165, in new_forward
-    output = old_forward(*args, **kwargs)
-  File "/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 809, in forward
-    outputs = self.model(
-  File "/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/accelerate/hooks.py", line 165, in new_forward
-    output = old_forward(*args, **kwargs)
-  File "/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 690, in forward
-    layer_outputs = torch.utils.checkpoint.checkpoint(
-  File "/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/torch/utils/checkpoint.py", line 249, in checkpoint
-    return CheckpointFunction.apply(function, preserve, *args)
-  File "/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/torch/autograd/function.py", line 506, in apply
-    return super().apply(*args, **kwargs)  # type: ignore[misc]
-  File "/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/torch/utils/checkpoint.py", line 107, in forward
-    outputs = run_function(*args)
-  File "/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 686, in custom_forward
-    return module(*inputs, past_key_value, output_attentions)
-  File "/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/accelerate/hooks.py", line 165, in new_forward
-    output = old_forward(*args, **kwargs)
-  File "/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 413, in forward
-    hidden_states, self_attn_weights, present_key_value = self.self_attn(
-  File "/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/accelerate/hooks.py", line 165, in new_forward
-    output = old_forward(*args, **kwargs)
-  File "/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 310, in forward
-    query_states = self.q_proj(hidden_states)
-  File "/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/peft/tuners/lora.py", line 1156, in forward
-    output = lora_B(lora_A(dropout(x)))
-  File "/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/home/charlie/anaconda3/envs/llama_ft/lib/python3.10/site-packages/torch/nn/modules/linear.py", line 114, in forward
-    return F.linear(input, self.weight, self.bias)
+  File "/root/llama-recipes/utils/train_utils.py", line 105, in train
+    loss.backward()
+  File "/root/miniconda3/envs/llama_ft/lib/python3.10/site-packages/torch/_tensor.py", line 487, in backward
+    torch.autograd.backward(
+  File "/root/miniconda3/envs/llama_ft/lib/python3.10/site-packages/torch/autograd/__init__.py", line 200, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
 KeyboardInterrupt
