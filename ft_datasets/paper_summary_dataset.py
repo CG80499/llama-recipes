@@ -91,6 +91,12 @@ class PaperSummaryDataset(Dataset):
         self.tokenizer = tokenizer
         # self.tokenizer1 = tokenizer
 
+        # Dump example prompt to disk
+        sample = self.dataset[0]
+        prompt = create_prompt_from_sample(sample)
+        with open("prompt_example.json", "w") as f:
+            json.dump({"prompt": prompt.dict(), "output": sample.final_summary}, f)
+
     def __len__(self) -> int:
         return len(self.dataset)
 

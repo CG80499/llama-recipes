@@ -1,0 +1,73 @@
+Human: I need you to help me summarize academic papers. Our research question is "Is creatine effective for cognitive enhancement?".
+
+I've collected many papers that might address this research question.
+
+Paper 1: Ling 2009
+
+Title: Cognitive effects of creatine ethyl ester supplementation
+
+Abstract: Supplementation with creatine-based substances as a means of enhancing athletic performance has become widespread. Until recently, however, the effects of creatine supplementation on cognitive performance has been given little attention. This study used a new form of creatine – creatine ethyl ester – to investigate whether supplementation would improve performance in five cognitive tasks, using a double-blind, placebo-controlled study. Creatine dosing led to an improvement over the placebo condition on several measures. Although creatine seems to facilitate cognition on some tasks, these results require replication using objective measures of compliance. The improvement is discussed in the context of research examining the influence of brain energy capacity on cognitive performance.
+
+–
+
+Paper 2: Rawson 2011
+
+Title: Use of creatine in the elderly and evidence for effects on cognitive function in young and old
+
+Abstract: The ingestion of the dietary supplement creatine (about 20 g/day for 5 days or about 2 g/day for 30 days) results in increased skeletal muscle creatine and phosphocreatine. Subsequently, the performance of high-intensity exercise tasks, which rely heavily on the creatine-phosphocreatine energy system, is enhanced. The well documented benefits of creatine supplementation in young adults, including increased lean body mass, increased strength, and enhanced fatigue resistance are particularly important to older adults. With aging and reduced physical activity, there are decreases in muscle creatine, muscle mass, bone density, and strength. However, there is evidence that creatine ingestion may reverse these changes, and subsequently improve activities of daily living. Several groups have demonstrated that in older adults, short-term high-dose creatine supplementation, independent of exercise training, increases body mass, enhances fatigue resistance, increases ... , concurrent creatine supplementation and resistance training increase lean body mass, enhance fatigue resistance, increase muscle strength, and improve performance of activities of daily living to a greater extent than resistance training alone. Additionally, creatine supplementation plus resistance training results in a greater increase in bone mineral density than resistance training alone. Higher brain creatine is associated with improved neuropsychological performance, and recently, creatine supplementation has been shown to increase brain creatine and phosphocreatine. Subsequent studies have demonstrated that cognitive processing, that is either experimentally (following sleep deprivation) or naturally (due to aging) impaired, can be improved with creatine supplementation. Creatine is an inexpensive and safe dietary supplement that has both peripheral and central effects. The benefits afforded to older adults through creatine ingestion are substantial, can improve quality of life, and ultimately may reduce the disease burden associated with sarcopenia and cognitive dysfunction.
+
+–
+
+Paper 3: Avgerinos 2018
+
+Title: Effects of creatine supplementation on cognitive function of healthy individuals: A systematic review of randomized controlled trials
+
+Abstract: Background and aims: Creatine is a supplement used by sportsmen to increase athletic performance by improving energy supply to muscle tissues. It is also an essential brain compound and some hypothesize that it aids cognition by improving energy supply and neuroprotection. The aim of this systematic review is to investigate the effects of oral creatine administration on cognitive function in healthy individuals. Methods: A search of multiple electronic databases was performed for the identification of randomized clinical trials (RCTs) examining the cognitive effects of oral creatine supplementation in healthy individuals. Results: Six studies (281 individuals) met our inclusion criteria. Generally, there was evidence that short term memory and intelligence/reasoning may be improved by creatine administration. Regarding other cognitive domains, such as long‐term memory, spatial memory, memory scanning, attention, executive function, response inhibition, word fluency, reaction time and mental fatigue, the results were conflicting. Performance on cognitive tasks stayed unchanged in young individuals. Vegetarians responded better than meat‐eaters in memory tasks but for other cognitive domains no differences were observed. Conclusions: Oral creatine administration may improve short‐term memory and intelligence/reasoning of healthy individuals but its effect on other cognitive domains remains unclear. Findings suggest potential benefit for aging and stressed individuals. Since creatine is safe, future studies should include larger sample sizes. It is imperative that creatine should be tested on patients with dementias or cognitive impairment. HIGHLIGHTSOral creatine supplementation improves memory of healthy adults.Findings suggest potential benefit for aging and stressed individuals.Future trials should investigate the effect of creatine administration on individuals with dementia or mild cognitive impairment.
+
+–
+
+Paper 4: McMorris 2007
+
+Title: Creatine Supplementation and Cognitive Performance in Elderly Individuals
+
+Abstract: ABSTRACT The purpose of this study was to examine the effect of creatine supplementation on the cognitive performance of elderly people. Participants were divided into two groups, which were tested on random number generation, forward and backward number and spatial recall, and long-term memory tasks to establish a baseline level. Group 1 (n = 15) were given 5 g four times a day of placebo for 1 week, followed by the same dosage of creatine for the second week. Group 2 (n = 17) were given placebo both weeks. Participants were retested at the end of each week. Results showed a significant effect of creatine supplementation on all tasks except backward number recall. It was concluded that creatine supplementation aids cognition in the elderly.
+
+–
+
+Paper 5: Rawson 2008
+
+Title: Creatine supplementation does not improve cognitive function in young adults
+
+Abstract: Creatine supplementation has been reported to improve certain aspects of cognitive and psychomotor function in older individuals and in young subjects following 24 and 36 h of sleep deprivation. However, the effects of creatine supplementation on cognitive processing and psychomotor performance in non-sleep deprived young adults have not been assessed with a comprehensive battery of neurocognitive tests. The primary objective of this study was to examine the effects of creatine supplementation on cognitive processing and psychomotor performance in young adults. Twenty-two subjects (21+/-2 yr) ingested creatine (0.03 g/kg/day) or placebo for 6 weeks in a double-blind placebo-controlled fashion. Subjects completed a battery of neurocognitive tests pre- and post-supplementation, including: simple reaction time (RT), code substitution (CS), code substitution delayed (CSD), logical reasoning symbolic (LRS), mathematical processing (MP), running memory (RM), and Sternberg memory recall (MR). There were no significant effects of group, no significant effects of time, and no significant group by time interactions for RT, CS, CSD, LRS, MP, RM, and MR (all p>0.05), indicating that there were no differences between creatine and placebo supplemented groups at any time. These results suggest that six weeks of creatine supplementation (0.03/g/kg/day) does not improve cognitive processing in non-sleep deprived young adults. Potentially, creatine supplementation only improves cognitive processing and psychomotor performance in individuals who have impaired cognitive processing abilities.
+
+–
+
+Paper 6: Rae 2003
+
+Title: Oral creatine monohydrate supplementation improves brain performance: a double–blind, placebo–controlled, cross–over trial
+
+Abstract: Creatine supplementation is in widespread use to enhance sports–fitness performance, and has been trialled successfully in the treatment of neurological, neuromuscular and atherosclerotic disease. Creatine plays a pivotal role in brain energy homeostasis, being a temporal and spatial buffer for cytosolic and mitochondrial pools of the cellular energy currency, adenosine triphosphate and its regulator, adenosine diphosphate. In this work, we tested the hypothesis that oral creatine supplementation (5 g d-1 for six weeks) would enhance intelligence test scores and working memory performance in 45 young adult, vegetarian subjects in a double–blind, placebo–controlled, cross–over design. Creatine supplementation had a significant positive effect (p < 0.0001) on both working memory (backward digit span) and intelligence (Raven's Advanced Progressive Matrices), both tasks that require speed of processing. These findings underline a dynamic and significant role of brain energy capacity in influencing brain performance.
+
+–
+
+Paper 7: Rae 2015
+
+Title: Creatine as a booster for human brain function. How might it work?
+
+Abstract: Creatine, a naturally occurring nitrogenous organic acid found in animal tissues, has been found to play key roles in the brain including buffering energy supply, improving mitochondrial efficiency, directly acting as an anti-oxidant and acting as a neuroprotectant. Much of the evidence for these roles has been established in vitro or in pre-clinical studies. Here, we examine the roles of creatine and explore the current status of translation of this research into use in humans and the clinic. Some further possibilities for use of creatine in humans are also discussed.
+
+–
+
+Paper 8: Shear 2000
+
+Title: Creatine reduces 3‐nitropropionic‐acid‐induced cognitive and motor abnormalities in rats
+
+Abstract: This study assessed whether creatine could attenuate 3-nitropropionic acid (3NP)-induced neuropathological and behavioral abnormalities that are analogous to those observed in Huntington's disease (HD). Rats were fed diets containing either 1% creatine or normal rat chow for 2 weeks prior to the onset of 3NP administration, and for the duration of the study. 3NP was administered systemically in gradually increasing concentrations over an 8-week testing period. Results show that creatine can attenuate 3NP-induced striatal lesions, striatal atrophy, ventricular enlargement, cognitive deficits, and motor abnormalities on a balance beam task. Collectively, these findings indicate that creatine provides significant protection against 3NP-induced behavioral and neuropathological abnormalities and may have therapeutic potential for HD.
+
+Write a summary of what the papers collectively say about the research question.
+
+You must cite the papers in your summary. You can use the following format: Author (year)
+
+You will only include the findings that directly answer our research question, ignoring other findings that are only loosely relevant. Remember to include citations in the final summary. Your final summary should use varied and engaging language.
+
+Assistant: Here is a fully complete summary in varied and engaging language of everything all the papers have to say on the research question "Is creatine effective for cognitive enhancement?".\n\n
