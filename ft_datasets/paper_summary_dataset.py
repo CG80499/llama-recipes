@@ -23,9 +23,9 @@ Write a summary of what the papers collectively say about the research question.
 
 You must cite the papers in your summary. You can use the following format: Author (year)
 
-You will only include the findings that directly answer our research question, ignoring other findings that are only loosely relevant. Remember to include citations in the final summary. Your final summary should use varied and engaging language."""
+You will only include the findings that directly answer our research question, ignoring other findings that are only loosely relevant. Remember to include citations in the final summary. Your final summary should use varied and engaging language but not be overly verbose."""
 
-SUFFIX = """ Here is a fully complete summary in varied and engaging language of everything all the papers have to say on the research question "{query}".\n\n"""
+SUFFIX = """ Here is a fully complete concise summary in varied and engaging language of everything all the papers have to say on the research question "{query}".\n\n"""
 
 class TrainingSample(BaseModel):
     query: str
@@ -82,9 +82,9 @@ class PaperSummaryDataset(Dataset):
         raw_dataset = json.load(open(dataset_config.data_path))
         self.dataset: list[TrainingSample] = [TrainingSample(**sample) for sample in raw_dataset]
         if partition == "train":
-            self.dataset = self.dataset[:-50] # last 50 samples are reserved for validation
+            self.dataset = self.dataset # last 50 samples are reserved for validation
         else:
-            self.dataset = self.dataset[-50:]
+            self.dataset = self.dataset[:50]
 
         self.max_tokens = max_tokens
         # tokenizer = Tokenizer(model_path=model_path + "./tokenizer.model")
