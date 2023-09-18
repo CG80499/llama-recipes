@@ -240,6 +240,7 @@ def evaluation(model,train_config, eval_dataloader, local_rank, tokenizer):
     model.eval()
     eval_preds = []
     eval_loss = 0.0  # Initialize evaluation loss
+    eval_accuracy = []  # Initialize evaluation accuracy
     with MemoryTrace() as memtrace:
         for step, batch in enumerate(tqdm(eval_dataloader,colour="green", desc="evaluating Epoch")):
             for key in batch.keys():
@@ -258,6 +259,9 @@ def evaluation(model,train_config, eval_dataloader, local_rank, tokenizer):
             eval_preds.extend(
                 tokenizer.batch_decode(preds.detach().cpu().numpy(), skip_special_tokens=True)
             )
+            # Compute average loss
+            acc = ((preds == batch["labels"]).float() * batch["attention_mask"]).sum() / batch["attention_mask"].sum()
+            eval_accuracy.append(acc.detach().cpu().float())
     
     # If there's more than one CUDA device, reduce evaluation loss across all devices
     if torch.cuda.device_count() > 1 and train_config.enable_fsdp:
@@ -268,13 +272,14 @@ def evaluation(model,train_config, eval_dataloader, local_rank, tokenizer):
     if train_config.enable_fsdp:
         eval_epoch_loss = eval_epoch_loss/world_size
     eval_ppl = torch.exp(eval_epoch_loss)
+    eval_acc = sum(eval_accuracy) / len(eval_accuracy)
     
     # Print evaluation metrics
     if train_config.enable_fsdp:
         if local_rank==0:
-            print(f" {eval_ppl=} {eval_epoch_loss=}")
+            print(f" {eval_ppl=} {eval_epoch_loss=} {eval_acc=}")
     else:
-        print(f" {eval_ppl=} {eval_epoch_loss=}")
+        print(f" {eval_ppl=} {eval_epoch_loss=} {eval_acc=}")
         
     return eval_ppl, eval_epoch_loss
 
