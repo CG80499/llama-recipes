@@ -32,4 +32,4 @@ class paper_summary_dataset:
     dataset: str = "paper_summary_dataset"
     train_split: str = "train"
     test_split: str = "validation"
-    data_path: str = "ft_datasets/training_samples.json"
+    data_path: str = "ft_datasets/verifier_data.json"

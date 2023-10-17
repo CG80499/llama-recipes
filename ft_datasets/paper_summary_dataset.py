@@ -11,26 +11,10 @@ import torch
 from torch.utils.data import Dataset
 from pydantic import BaseModel
 
-# String templates for the prompt
 
-USER_TEMPLATE = """I need you to help me summarize academic papers. Our research question is "{query}".
-
-I've collected many papers that might address this research question.
-
-{paper_list}
-
-Write a summary of what the papers collectively say about the research question.
-
-You must cite the papers in your summary. You can use the following format: Author (year)
-
-You will only include the findings that directly answer our research question, ignoring other findings that are only loosely relevant. Remember to include citations in the final summary. Your final summary should use varied and engaging language but not be overly verbose."""
-
-SUFFIX = """ Here is a fully complete concise summary in varied and engaging language of everything all the papers have to say on the research question "{query}".\n\n"""
-
-class TrainingSample(BaseModel):
-    query: str
-    paper_list_string: str
-    final_summary: str
+class Example(BaseModel):
+    user_message: str
+    correct: bool
 
 class TextMessage(BaseModel):
     content: str
@@ -66,23 +50,23 @@ class Chat(BaseModel):
             ) + "ASSISTANT:"
         )
 
-def create_chat_from_sample(sample: TrainingSample) -> Chat:
+def create_chat_from_sample(sample: Example) -> Chat:
     return Chat(
         messages=[
-            TextUserMessage(content=USER_TEMPLATE.format(paper_list=sample.paper_list_string, query=sample.query)),
+            TextUserMessage(content=sample.user_message),
         ]
     )
 
-def create_prompt_from_sample(sample: TrainingSample) -> str:
+def create_prompt_from_sample(sample: Example) -> str:
     chat = create_chat_from_sample(sample)
-    return chat.llama_render() + SUFFIX.format(query=sample.query)
+    return chat.llama_render() + " The student's best guess is"
 
 class PaperSummaryDataset(Dataset):
-    def __init__(self, dataset_config, tokenizer, partition="train", max_tokens=7000):
+    def __init__(self, dataset_config, tokenizer, partition="train", max_tokens=512):
         raw_dataset = json.load(open(dataset_config.data_path))
-        self.dataset: list[TrainingSample] = [TrainingSample(**sample) for sample in raw_dataset]
+        self.dataset: list[Example] = [Example(**sample) for sample in raw_dataset]
         if partition == "train":
-            self.dataset = self.dataset # last 50 samples are reserved for validation
+            self.dataset = self.dataset[50:] # last 50 samples are reserved for validation
         else:
             self.dataset = self.dataset[:50]
 
@@ -95,7 +79,7 @@ class PaperSummaryDataset(Dataset):
         sample = self.dataset[0]
         prompt = create_prompt_from_sample(sample)
         with open("prompt_example.json", "w") as f:
-            json.dump({"prompt": prompt, "output": sample.final_summary}, f)
+            json.dump({"prompt": prompt, "output": sample.correct}, f)
 
     def __len__(self) -> int:
         return len(self.dataset)
@@ -106,13 +90,12 @@ class PaperSummaryDataset(Dataset):
 
         sample = self.dataset[index]
         prompt = create_prompt_from_sample(sample)
-        output = sample.final_summary
+        output = " correct" if sample.correct else " incorrect"
         example = prompt + output
         prompt = torch.tensor(
             self.tokenizer.encode(prompt), dtype=torch.int64
         )
         example = self.tokenizer.encode(example)
-        example.append(self.tokenizer.eos_token_id)
         print("Number of tokens in the example: ", len(example))
         example = torch.tensor(
             example, dtype=torch.int64

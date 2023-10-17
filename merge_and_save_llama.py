@@ -3,11 +3,11 @@ from transformers import AutoTokenizer, LlamaForCausalLM
 from peft import PeftModel, AutoPeftModelForCausalLM
 import torch
 
-output_dir = "llama-recipes/FT-vicuna-13b-v1.5-16k-v3"
+output_dir = "FT-vicuna-13b-v1.5-verifier-v2-pretrain"
 
-model_name = "lmsys/vicuna-13b-v1.5-16k"
+model_name = "lmsys/vicuna-13b-v1.5"
 
-output_merged_dir = "vicuna-13b-v1.5-16k-paper-summary-v2"
+output_merged_dir = "vicuna-13b-v1.5-verfier-v2-pretrain"
 
 # save tokenizer for easy inference
 tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -29,7 +29,7 @@ def load_peft_model(model, peft_model):
     return peft_model
 
 os.makedirs(output_merged_dir, exist_ok=True)
-model = load_model("lmsys/vicuna-13b-v1.5-16k")
+model = load_model("lmsys/vicuna-13b-v1.5")
 model = load_peft_model(model, output_dir)
 model = model.merge_and_unload()
 

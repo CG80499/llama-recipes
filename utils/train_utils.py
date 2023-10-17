@@ -77,8 +77,8 @@ def train(model, train_dataloader,eval_dataloader, tokenizer, optimizer, lr_sche
     epoch_times = []
     checkpoint_times = []
     results = {}
-    best_val_loss = float("inf")
-    eval_ppl, eval_epoch_loss = evaluation(model, train_config, eval_dataloader, local_rank, tokenizer)
+    best_val_acc = 0.0
+    eval_ppl, eval_acc = evaluation(model, train_config, eval_dataloader, local_rank, tokenizer)
     for epoch in range(train_config.num_epochs):
         epoch_start_time = time.perf_counter()
         with MemoryTrace() as memtrace:  # track the memory usage
@@ -142,9 +142,9 @@ def train(model, train_dataloader,eval_dataloader, tokenizer, optimizer, lr_sche
         lr_scheduler.step()
           
         if train_config.run_validation:
-            eval_ppl, eval_epoch_loss = evaluation(model, train_config, eval_dataloader, local_rank, tokenizer)
+            eval_ppl, eval_acc = evaluation(model, train_config, eval_dataloader, local_rank, tokenizer)
             checkpoint_start_time = time.perf_counter()
-            if train_config.save_model and eval_epoch_loss < best_val_loss:
+            if train_config.save_model and eval_acc > best_val_acc:
                 if train_config.enable_fsdp:
                     dist.barrier()
                 if train_config.use_peft:
@@ -186,14 +186,14 @@ def train(model, train_dataloader,eval_dataloader, tokenizer, optimizer, lr_sche
                     dist.barrier()
             checkpoint_end_time = time.perf_counter() - checkpoint_start_time
             checkpoint_times.append(checkpoint_end_time)
-            if eval_epoch_loss < best_val_loss:
-                best_val_loss = eval_epoch_loss
+            if eval_acc > best_val_acc:
+                best_val_acc = eval_acc
                 if train_config.enable_fsdp:
                     if rank==0:
-                        print(f"best eval loss on epoch {epoch} is {best_val_loss}")
+                        print(f"best eval accuracy on epoch {epoch} is {best_val_acc}")
                 else:
-                    print(f"best eval loss on epoch {epoch} is {best_val_loss}")
-            val_loss.append(best_val_loss)
+                    print(f"best eval accuracy on epoch {epoch} is {best_val_acc}")
+            val_loss.append(best_val_acc)
             val_prep.append(eval_ppl)
         
         if train_config.enable_fsdp:
@@ -260,7 +260,7 @@ def evaluation(model,train_config, eval_dataloader, local_rank, tokenizer):
                 tokenizer.batch_decode(preds.detach().cpu().numpy(), skip_special_tokens=True)
             )
             # Compute average loss
-            acc = ((preds == batch["labels"]).float() * batch["attention_mask"]).sum() / batch["attention_mask"].sum()
+            acc = ((preds[:, :-1] == batch["labels"][:, 1:]).float() * batch["labels"].ne(-100).float()[:, 1:]).sum()
             eval_accuracy.append(acc.detach().cpu().float())
     
     # If there's more than one CUDA device, reduce evaluation loss across all devices
@@ -281,7 +281,7 @@ def evaluation(model,train_config, eval_dataloader, local_rank, tokenizer):
     else:
         print(f" {eval_ppl=} {eval_epoch_loss=} {eval_acc=}")
         
-    return eval_ppl, eval_epoch_loss
+    return eval_ppl, eval_acc
 
 def freeze_transformer_layers(model, num_layer):
    for i, layer in enumerate(model.model.layers):
