@@ -84,7 +84,7 @@ class PaperSummaryDataset(Dataset):
         if partition == "train":
             self.dataset = self.dataset # last 50 samples are reserved for validation
         else:
-            self.dataset = self.dataset[:50]
+            self.dataset = [self.dataset[-1]]
 
         self.max_tokens = max_tokens
         # tokenizer = Tokenizer(model_path=model_path + "./tokenizer.model")

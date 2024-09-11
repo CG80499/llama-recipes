@@ -224,6 +224,7 @@ def train(model, train_dataloader,eval_dataloader, tokenizer, optimizer, lr_sche
     return results
 
 def evaluation(model,train_config, eval_dataloader, local_rank, tokenizer):
+    return 0,0
     """
     Evaluates the model on the given dataloader
     

@@ -16,7 +16,7 @@ from torch.optim.lr_scheduler import StepLR
 from torch.utils.data import DistributedSampler
 from transformers import (
     LlamaForCausalLM,
-    LlamaTokenizer,
+    AutoTokenizer,
     LlamaConfig,
     default_data_collator,
 )
@@ -86,9 +86,11 @@ def main(**kwargs):
                 train_config.model_name,
                 load_in_8bit=True if train_config.quantization else None,
                 device_map="auto" if train_config.quantization else None,
+                torch_dtype=torch.bfloat16,
             )
         else:
             llama_config = LlamaConfig.from_pretrained(train_config.model_name)
+            llama_config.torch_dtype = torch.bfloat16
             with torch.device("meta"):
                 model = LlamaForCausalLM(llama_config)
 
@@ -97,18 +99,8 @@ def main(**kwargs):
             train_config.model_name,
             load_in_8bit=True if train_config.quantization else None,
             device_map="auto" if train_config.quantization else None,
+            torch_dtype=torch.bfloat16,
         )
-    if train_config.enable_fsdp and train_config.use_fast_kernels:
-        """
-        For FSDP and FSDP+PEFT, setting 'use_fast_kernels' will enable
-        using of Flash Attention or Xformer memory-efficient kernels 
-        based on the hardware being used. This would speed up fine-tuning.
-        """
-        try:
-            from optimum.bettertransformer import BetterTransformer
-            model = BetterTransformer.transform(model) 
-        except ImportError:
-            print("Module 'optimum' not found. Please install 'optimum' it before proceeding.")
     print_model_size(model, train_config, rank if train_config.enable_fsdp else 0)
 
     # Prepare the model for int8 training if quantization is enabled
@@ -120,7 +112,7 @@ def main(**kwargs):
         model.to(torch.bfloat16)
 
     # Load the tokenizer and add special tokens
-    tokenizer = LlamaTokenizer.from_pretrained(train_config.model_name)
+    tokenizer = AutoTokenizer.from_pretrained(train_config.model_name)
     tokenizer.add_special_tokens(
             {
 
